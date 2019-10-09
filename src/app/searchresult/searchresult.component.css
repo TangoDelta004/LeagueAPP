@@ -1,0 +1,14 @@
+.vr { 
+    border-left: 3px solid gray; 
+    height: 1000px; 
+    position:absolute; 
+    left: 50%; 
+} 
+
+.picCenter {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+   
+  }
