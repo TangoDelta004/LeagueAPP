@@ -14,7 +14,20 @@ export class SearchresultComponent implements OnInit {
   resultsobtained = false
   summonwins = false
   opponentwins = false
-  champion = ''
+
+
+  summonpwnertier = ""
+  summonpwnerrank = ""
+  opponenttier = ""
+  opprank = ""
+
+  oppbestchamp = ""
+  oppbestchampmastery = ""
+  opptotalmastery=""
+  SPbestchamp = ""
+  SPbestchampmastery = ""
+  SPtotalmastery=""
+
   oppiron = false
   oppbronze = false
   oppsilver = false
@@ -24,6 +37,7 @@ export class SearchresultComponent implements OnInit {
   oppmaster = false
   oppgrandmaster = false
   oppchallenger = false
+  oppunranked = false
   iron = false
   bronze = false
   silver = false
@@ -33,13 +47,44 @@ export class SearchresultComponent implements OnInit {
   master = false
   grandmaster = false
   challenger = false
-  key = 'RGAPI-5736a2ae-b159-44aa-a706-3ac12ccdbf79'
+  unranked = false
+
+  oppratio=0
+  ratio=0
+
+  imageToShow=''
+
+  key = 'RGAPI-351805b9-5973-466c-b9eb-e984da5b5dd4'
+
+
 
 
   constructor(private route: ActivatedRoute, private http: HttpClient) { }
 
+
+
+
+
   ngOnInit() {
 
+    function numberWithCommas(x) {
+      return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+
+    function createImageFromBlob(image) {
+      
+      let reader = new FileReader();
+      reader.addEventListener("load", () => {
+        //console.log(reader.result) 
+        this.imageToShow = reader.result;
+      }, false);
+   
+      if (image) {
+         reader.readAsDataURL(image);
+      }
+   }
+
+    // this gets the summoner name from the URL so be used
     console.log(this.route.snapshot.params)
     this.route.params.pipe(map(responseData => {
       const array = []
@@ -59,6 +104,7 @@ export class SearchresultComponent implements OnInit {
     var summonpwnerId = ''
     var winner = ''
 
+    // this gets the summoners ID from his summonername
     const request = this.http.get(`https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/${this.summonername}?api_key=${this.key}`)
     console.log(this.summonername)
     request.pipe(map(responseData => {
@@ -71,6 +117,7 @@ export class SearchresultComponent implements OnInit {
       console.log(response)
       summonerId = response[0]
 
+      //this gets the list of champions in order of mastery for that summoner ID
       const masteryrequest = this.http.get(`https://na1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/${summonerId}?api_key=${this.key}`)
       masteryrequest.pipe(map(responseData => {
         const array = []
@@ -80,10 +127,17 @@ export class SearchresultComponent implements OnInit {
         return array
       })).subscribe((response) => {
         console.log(response)
-        const bestchamp = response[0].championId
-        const bestchampmastery = response[0].championPoints
+        this.oppbestchamp = response[0].championId
+        this.oppbestchampmastery = response[0].championPoints
+        var oppnummastery=0
+        for (var i in response){
+          oppnummastery+=parseInt(response[i].championPoints,10)
+          
+        }
+        this.opptotalmastery=oppnummastery.toString()
 
-
+        this.opptotalmastery=numberWithCommas(this.opptotalmastery)
+        //this gets summonpwners ID
         const request = this.http.get(`https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/Summonpwner?api_key=${this.key}`)
 
         request.pipe(map(responseData => {
@@ -96,6 +150,7 @@ export class SearchresultComponent implements OnInit {
           console.log(response)
           summonpwnerId = response[0]
 
+          //this gets Summonpwners champion mastery list
           const masteryrequest = this.http.get(`https://na1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/${summonpwnerId}?api_key=${this.key}`)
           masteryrequest.pipe(map(responseData => {
             const array = []
@@ -105,9 +160,17 @@ export class SearchresultComponent implements OnInit {
             return array
           })).subscribe((response) => {
             console.log(response)
-            const bestchamp2 = response[0].championId
-            const bestchampmastery2 = response[0].championPoints
+            this.SPbestchamp = response[0].championId
+            this.SPbestchampmastery = response[0].championPoints
+            var SPnummastery=0
+            for (var i in response){
+              SPnummastery+=parseInt(response[i].championPoints,10)
+              
+            }
+            this.SPtotalmastery=SPnummastery.toString()
+            this.SPtotalmastery= numberWithCommas(this.SPtotalmastery)
 
+            //this gets the list of champions so I can match the champion ID to its name
             const ddragon = this.http.get("http://ddragon.leagueoflegends.com/cdn/9.18.1/data/en_US/champion.json")
             ddragon.pipe(map(responseData => {
               const array = []
@@ -123,24 +186,21 @@ export class SearchresultComponent implements OnInit {
                 list.push(champlist[champ])
               }
               for (const index in list) {
-                if (list[index].key == bestchamp) {
+                if (list[index].key == this.oppbestchamp) {
 
                   console.log(list[index].id)
-                  this.champion = list[index].id
+                  this.oppbestchamp = list[index].id
+                }
+                if (list[index].key == this.SPbestchamp) {
+
+                  console.log(list[index].id)
+                  this.SPbestchamp = list[index].id
                 }
               }
-              if (bestchampmastery2 > bestchampmastery) {
-                winner = "Summonpwner"
-                this.winner = winner
-                this.resultsobtained = true
-                this.summonwins = true
-              }
-              else {
-                winner = this.summonername
-                this.winner = winner
-                this.resultsobtained = true
-                this.opponentwins = true
-              }
+
+              this.SPbestchampmastery = numberWithCommas(this.SPbestchampmastery)
+              this.oppbestchampmastery = numberWithCommas(this.oppbestchampmastery)
+
               console.log(summonerId)
               const elorequest = this.http.get(`https://na1.api.riotgames.com/lol/league/v4/entries/by-summoner/${summonerId}?api_key=${this.key}`)
               elorequest.pipe(map(responseData => {
@@ -150,10 +210,23 @@ export class SearchresultComponent implements OnInit {
                 }
                 return array
               })).subscribe((response) => {
-                console.log(response)
-                console.log(response[0].tier)
-                const opponentrank = response[0].tier
-                switch (opponentrank) {
+
+                for (var i in response) {
+
+                  if (response[i].queueType == "RANKED_SOLO_5x5") {
+
+                    this.opponenttier = response[i].tier
+                  
+                    if (this.opponenttier != "CHALLENGER") {
+                      this.opprank = response[i].rank
+                    }
+
+                    this.oppratio= Math.round((response[i].wins/(response[i].wins+response[i].losses))*100)
+                    
+                    console.log(response)
+                  }
+                }
+                switch (this.opponenttier) {
                   case "IRON": {
                     this.oppiron = true
                     break;
@@ -191,7 +264,7 @@ export class SearchresultComponent implements OnInit {
                     break;
                   }
                   default: {
-                    //statements; 
+                    this.oppunranked = true
                     break;
                   }
                 }
@@ -203,9 +276,19 @@ export class SearchresultComponent implements OnInit {
                   }
                   return array
                 })).subscribe((response) => {
-                  const summonpwnerrank = response[1].tier
-                  console.log(response)
-                  switch (summonpwnerrank) {
+
+                  for (var i in response) {
+
+                    if (response[i].queueType == "RANKED_SOLO_5x5") {
+
+                      this.summonpwnertier = response[i].tier
+                      this.summonpwnerrank = response[i].rank
+
+                      this.ratio= Math.round((response[i].wins/(response[i].wins+response[i].losses))*100)
+                      console.log(response)
+                    }
+                  }
+                  switch (this.summonpwnertier) {
                     case "IRON": {
                       this.iron = true
                       break;
@@ -243,10 +326,12 @@ export class SearchresultComponent implements OnInit {
                       break;
                     }
                     default: {
-                      //statements; 
+                      this.unranked = true
                       break;
                     }
                   }
+               
+
                 })
               })
             })
@@ -264,4 +349,5 @@ export class SearchresultComponent implements OnInit {
 
 
   }
+
 }
