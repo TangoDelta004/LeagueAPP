@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { HttpClient, HttpRequest } from '@angular/common/http';
 import { map } from 'rxjs/operators'
 
+
 @Component({
   selector: 'app-searchresult',
   templateUrl: './searchresult.component.html',
@@ -23,10 +24,10 @@ export class SearchresultComponent implements OnInit {
 
   oppbestchamp = ""
   oppbestchampmastery = ""
-  opptotalmastery=""
+  opptotalmastery = ""
   SPbestchamp = ""
   SPbestchampmastery = ""
-  SPtotalmastery=""
+  SPtotalmastery = ""
 
   oppiron = false
   oppbronze = false
@@ -49,14 +50,20 @@ export class SearchresultComponent implements OnInit {
   challenger = false
   unranked = false
 
-  oppratio=0
-  ratio=0
+  oppratio = 0
+  ratio = 0
 
-  imageToShow=''
+  oppkills = ''
+  oppdeaths = ''
+  oppassists = ''
+  oppcs = ''
+  oppvs = ''
+  opptotaldamage = ''
+  imageToShow = ''
 
-  key = 'RGAPI-351805b9-5973-466c-b9eb-e984da5b5dd4'
+  key = 'RGAPI-6ae53a53-f886-4383-b608-2da86b23e6ac'
 
-
+  counter = 0
 
 
   constructor(private route: ActivatedRoute, private http: HttpClient) { }
@@ -72,17 +79,17 @@ export class SearchresultComponent implements OnInit {
     }
 
     function createImageFromBlob(image) {
-      
+
       let reader = new FileReader();
       reader.addEventListener("load", () => {
         //console.log(reader.result) 
         this.imageToShow = reader.result;
       }, false);
-   
+
       if (image) {
-         reader.readAsDataURL(image);
+        reader.readAsDataURL(image);
       }
-   }
+    }
 
     // this gets the summoner name from the URL so be used
     console.log(this.route.snapshot.params)
@@ -101,6 +108,8 @@ export class SearchresultComponent implements OnInit {
     this.summonwins = false
     this.opponentwins = false
     var summonerId = ''
+    var accountId = ''
+    var summonpwneraccountId = ''
     var summonpwnerId = ''
     var winner = ''
 
@@ -116,6 +125,7 @@ export class SearchresultComponent implements OnInit {
     })).subscribe((response) => {
       console.log(response)
       summonerId = response[0]
+      accountId = response[1]
 
       //this gets the list of champions in order of mastery for that summoner ID
       const masteryrequest = this.http.get(`https://na1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/${summonerId}?api_key=${this.key}`)
@@ -129,14 +139,14 @@ export class SearchresultComponent implements OnInit {
         console.log(response)
         this.oppbestchamp = response[0].championId
         this.oppbestchampmastery = response[0].championPoints
-        var oppnummastery=0
-        for (var i in response){
-          oppnummastery+=parseInt(response[i].championPoints,10)
-          
-        }
-        this.opptotalmastery=oppnummastery.toString()
+        var oppnummastery = 0
+        for (var i in response) {
+          oppnummastery += parseInt(response[i].championPoints, 10)
 
-        this.opptotalmastery=numberWithCommas(this.opptotalmastery)
+        }
+        this.opptotalmastery = oppnummastery.toString()
+
+        this.opptotalmastery = numberWithCommas(this.opptotalmastery)
         //this gets summonpwners ID
         const request = this.http.get(`https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/Summonpwner?api_key=${this.key}`)
 
@@ -162,13 +172,13 @@ export class SearchresultComponent implements OnInit {
             console.log(response)
             this.SPbestchamp = response[0].championId
             this.SPbestchampmastery = response[0].championPoints
-            var SPnummastery=0
-            for (var i in response){
-              SPnummastery+=parseInt(response[i].championPoints,10)
-              
+            var SPnummastery = 0
+            for (var i in response) {
+              SPnummastery += parseInt(response[i].championPoints, 10)
+
             }
-            this.SPtotalmastery=SPnummastery.toString()
-            this.SPtotalmastery= numberWithCommas(this.SPtotalmastery)
+            this.SPtotalmastery = SPnummastery.toString()
+            this.SPtotalmastery = numberWithCommas(this.SPtotalmastery)
 
             //this gets the list of champions so I can match the champion ID to its name
             const ddragon = this.http.get("http://ddragon.leagueoflegends.com/cdn/9.18.1/data/en_US/champion.json")
@@ -216,13 +226,13 @@ export class SearchresultComponent implements OnInit {
                   if (response[i].queueType == "RANKED_SOLO_5x5") {
 
                     this.opponenttier = response[i].tier
-                  
+
                     if (this.opponenttier != "CHALLENGER") {
                       this.opprank = response[i].rank
                     }
 
-                    this.oppratio= Math.round((response[i].wins/(response[i].wins+response[i].losses))*100)
-                    
+                    this.oppratio = Math.round((response[i].wins / (response[i].wins + response[i].losses)) * 100)
+
                     console.log(response)
                   }
                 }
@@ -284,7 +294,7 @@ export class SearchresultComponent implements OnInit {
                       this.summonpwnertier = response[i].tier
                       this.summonpwnerrank = response[i].rank
 
-                      this.ratio= Math.round((response[i].wins/(response[i].wins+response[i].losses))*100)
+                      this.ratio = Math.round((response[i].wins / (response[i].wins + response[i].losses)) * 100)
                       console.log(response)
                     }
                   }
@@ -330,7 +340,87 @@ export class SearchresultComponent implements OnInit {
                       break;
                     }
                   }
-               
+
+                  const matches = this.http.get(`https://na1.api.riotgames.com/lol/match/v4/matchlists/by-account/${accountId}?api_key=${this.key}`)
+
+                  matches.pipe(map(responseData => {
+                    const array = []
+                    console.log('---------------')
+
+                    for (const key in responseData) {
+
+                      if (key == "matches") {
+                        array.push(responseData[key])
+                      }
+                    }
+                    return array
+                  })).subscribe((response) => {
+                    console.log(response)
+
+                    var waiter = true
+                    var l = 0
+                   
+                      console.log(".")
+                      while (waiter == true && l < 50) {
+                        console.log("HELLOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO")
+                        waiter = false
+                        var gameid = response[0][0].gameId
+
+
+                        const game = this.http.get(`https://na1.api.riotgames.com/lol/match/v4/matches/${gameid}?api_key=${this.key}`)
+                        game.pipe(map(responseData => {
+                          const array = []
+                          console.log('00000000000000000000000000000000000000000')
+                          console.log(responseData)
+                          for (const key in responseData) {
+
+                            array.push(responseData[key])
+
+                          }
+                          return array
+                        })).subscribe((response) => {
+                          console.log(response)
+                          for (i in response[12]) {
+                            console.log('.........................')
+                            console.log(response[12][i].player.summonerName)
+
+                            if (response[12][i].player.summonerName.toLowerCase() == this.summonername.toLowerCase()) {
+                              var oppparticipantid = response[12][i].participantId
+                              console.log(oppparticipantid)
+                              for (var j in response[11]) {
+                                if (response[11][j].participantId == oppparticipantid) {
+                                  console.log(j)
+                                  this.opptotaldamage += response[11][j].stats.totalDamageDealtToChampions
+                                  this.oppcs = response[11][j].stats.totalMinionsKilled + response[11][i].stats.neutralMinionsKilled
+                                  this.oppvs = response[11][j].stats.visionScore
+                                  this.oppkills = response[11][j].stats.kills
+                                  this.oppdeaths = response[11][j].stats.deaths
+                                  this.oppassists = response[11][j].stats.assists
+                                  this.counter += 1
+
+
+                                }
+                              }
+
+
+                            }
+                            setTimeout('', 1000);
+                            console.log(this.counter)
+                            console.log("ummmmm?")
+                            waiter = true
+                            l += 1
+
+                          }
+
+
+                        })
+
+                      }
+                    
+                  })
+
+
+
 
                 })
               })
