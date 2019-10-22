@@ -357,14 +357,13 @@ export class SearchresultComponent implements OnInit {
                   })).subscribe((response) => {
                     console.log(response)
 
-                    var waiter = true
-                    var l = 0
-                   
-                      console.log(".")
-                      while (waiter == true && l < 50) {
-                        console.log("HELLOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO")
-                        waiter = false
-                        var gameid = response[0][0].gameId
+
+                    console.log(".")
+                    
+                 
+                        for (var k=0;k<20;k++){
+                        
+                        var gameid = response[0][k].gameId
 
 
                         const game = this.http.get(`https://na1.api.riotgames.com/lol/match/v4/matches/${gameid}?api_key=${this.key}`)
@@ -404,19 +403,17 @@ export class SearchresultComponent implements OnInit {
 
 
                             }
-                            setTimeout('', 1000);
-                            console.log(this.counter)
-                            console.log("ummmmm?")
-                            waiter = true
-                            l += 1
+
 
                           }
-
-
+                          setTimeout('', 1000);
+                          console.log(this.counter)
+                          
                         })
 
-                      }
-                    
+                        }
+          
+
                   })
 
 
