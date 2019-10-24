@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient, HttpRequest } from '@angular/common/http';
 import { map } from 'rxjs/operators'
+import { ParseSourceSpan } from '@angular/compiler';
 
 
 @Component({
@@ -53,17 +54,25 @@ export class SearchresultComponent implements OnInit {
   oppratio = 0
   ratio = 0
 
-  oppkills = ''
-  oppdeaths = ''
-  oppassists = ''
-  oppcs = ''
-  oppvs = ''
-  opptotaldamage = ''
-  imageToShow = ''
+  oppkills = 0
+  oppdeaths = 0
+  oppassists = 0
+  oppcs = 0
+  oppvs = 0
+  opptotaldamage = 0
 
-  key = 'RGAPI-6ae53a53-f886-4383-b608-2da86b23e6ac'
+  SPkills = 0
+  SPdeaths = 0
+  SPassists = 0
+  SPcs = 0
+  SPvs = 0
+  SPtotaldamage = 0
+
+
+  key = 'RGAPI-b7b1b980-4960-4a0b-a92c-e17f10c27f3e'
 
   counter = 0
+  counter2 = 0
 
 
   constructor(private route: ActivatedRoute, private http: HttpClient) { }
@@ -78,18 +87,8 @@ export class SearchresultComponent implements OnInit {
       return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
 
-    function createImageFromBlob(image) {
 
-      let reader = new FileReader();
-      reader.addEventListener("load", () => {
-        //console.log(reader.result) 
-        this.imageToShow = reader.result;
-      }, false);
 
-      if (image) {
-        reader.readAsDataURL(image);
-      }
-    }
 
     // this gets the summoner name from the URL so be used
     console.log(this.route.snapshot.params)
@@ -159,6 +158,7 @@ export class SearchresultComponent implements OnInit {
         })).subscribe((response) => {
           console.log(response)
           summonpwnerId = response[0]
+          summonpwneraccountId = response[1]
 
           //this gets Summonpwners champion mastery list
           const masteryrequest = this.http.get(`https://na1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/${summonpwnerId}?api_key=${this.key}`)
@@ -221,6 +221,9 @@ export class SearchresultComponent implements OnInit {
                 return array
               })).subscribe((response) => {
 
+
+                
+
                 for (var i in response) {
 
                   if (response[i].queueType == "RANKED_SOLO_5x5") {
@@ -278,6 +281,8 @@ export class SearchresultComponent implements OnInit {
                     break;
                   }
                 }
+
+
                 const summonpwnerelo = this.http.get(`https://na1.api.riotgames.com/lol/league/v4/entries/by-summoner/${summonpwnerId}?api_key=${this.key}`)
                 summonpwnerelo.pipe(map(responseData => {
                   const array = []
@@ -341,8 +346,13 @@ export class SearchresultComponent implements OnInit {
                     }
                   }
 
-                  const matches = this.http.get(`https://na1.api.riotgames.com/lol/match/v4/matchlists/by-account/${accountId}?api_key=${this.key}`)
 
+
+                  
+
+
+                  const matches = this.http.get(`https://na1.api.riotgames.com/lol/match/v4/matchlists/by-account/${accountId}?api_key=${this.key}`)
+                
                   matches.pipe(map(responseData => {
                     const array = []
                     console.log('---------------')
@@ -359,15 +369,95 @@ export class SearchresultComponent implements OnInit {
 
 
                     console.log(".")
-                    
-                 
-                        for (var k=0;k<20;k++){
-                        
+
+
+              
+                    for (var k = 0; k < 5; k++) {
+
+
+                      var gameid = response[0][k].gameId
+
+
+                      const game = this.http.get(`https://na1.api.riotgames.com/lol/match/v4/matches/${gameid}?api_key=${this.key}`)
+                      game.pipe(map(responseData => {
+                        const array = []
+                        console.log('00000000000000000000000000000000000000000')
+                        console.log(responseData)
+                        for (const key in responseData) {
+
+                          array.push(responseData[key])
+
+                        }
+                        return array
+                      })).subscribe((response) => {
+                        console.log(response)
+                        for (i in response[12]) {
+                          console.log('.........................')
+                          console.log(response[12][i].player.summonerName)
+
+                          if (response[12][i].player.summonerName.toLowerCase() == this.summonername.toLowerCase()) {
+                            var oppparticipantid = response[12][i].participantId
+                            console.log(oppparticipantid)
+                            for (var j in response[11]) {
+                              if (response[11][j].participantId == oppparticipantid) {
+                                console.log(j)
+                                this.opptotaldamage += parseInt(response[11][j].stats.totalDamageDealtToChampions, 10)
+                                this.oppcs += parseInt(response[11][j].stats.totalMinionsKilled, 10) + parseInt(response[11][i].stats.neutralMinionsKilled, 10)
+                                this.oppvs += parseInt(response[11][j].stats.visionScore, 10)
+                                this.oppkills += parseInt(response[11][j].stats.kills, 10)
+                                this.oppdeaths += parseInt(response[11][j].stats.deaths, 10)
+                                this.oppassists += parseInt(response[11][j].stats.assists, 10)
+                                this.counter += 1
+                              }
+                            }
+
+
+                          }
+
+
+                        }
+                        console.log("LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL")
+                        console.log(this.counter)
+                        if (this.counter == 5) {
+                          this.opptotaldamage = Math.round(this.opptotaldamage / 5)
+                          this.oppcs = Math.round(this.oppcs / 5)
+                          this.oppvs = Math.round(this.oppvs / 5)
+                          this.oppkills = Math.round((this.oppkills / 5))
+                          this.oppdeaths = Math.round(this.oppdeaths / 5)
+                          this.oppassists = Math.round(this.oppassists / 5)
+                        }
+                      })
+
+                    }
+
+
+                    const SPmatches = this.http.get(`https://na1.api.riotgames.com/lol/match/v4/matchlists/by-account/${summonpwneraccountId}?api_key=${this.key}`)
+
+                    SPmatches.pipe(map(responseData => {
+                      const array = []
+                      console.log('---------------')
+
+                      for (const key in responseData) {
+
+                        if (key == "matches") {
+                          array.push(responseData[key])
+                        }
+                      }
+                      return array
+                    })).subscribe((response) => {
+                      console.log(response)
+
+
+                      console.log(".")
+
+              
+                      for (var k = 0; k < 5; k++) {
+
                         var gameid = response[0][k].gameId
 
 
-                        const game = this.http.get(`https://na1.api.riotgames.com/lol/match/v4/matches/${gameid}?api_key=${this.key}`)
-                        game.pipe(map(responseData => {
+                        const SPgame = this.http.get(`https://na1.api.riotgames.com/lol/match/v4/matches/${gameid}?api_key=${this.key}`)
+                        SPgame.pipe(map(responseData => {
                           const array = []
                           console.log('00000000000000000000000000000000000000000')
                           console.log(responseData)
@@ -383,21 +473,20 @@ export class SearchresultComponent implements OnInit {
                             console.log('.........................')
                             console.log(response[12][i].player.summonerName)
 
-                            if (response[12][i].player.summonerName.toLowerCase() == this.summonername.toLowerCase()) {
-                              var oppparticipantid = response[12][i].participantId
-                              console.log(oppparticipantid)
+                            var name = "summonpwner"
+                            if (response[12][i].player.summonerName.toLowerCase() == name.toLowerCase()) {
+                              var SPparticipantid = response[12][i].participantId
+                              console.log(SPparticipantid)
                               for (var j in response[11]) {
-                                if (response[11][j].participantId == oppparticipantid) {
+                                if (response[11][j].participantId == SPparticipantid) {
                                   console.log(j)
-                                  this.opptotaldamage += response[11][j].stats.totalDamageDealtToChampions
-                                  this.oppcs = response[11][j].stats.totalMinionsKilled + response[11][i].stats.neutralMinionsKilled
-                                  this.oppvs = response[11][j].stats.visionScore
-                                  this.oppkills = response[11][j].stats.kills
-                                  this.oppdeaths = response[11][j].stats.deaths
-                                  this.oppassists = response[11][j].stats.assists
-                                  this.counter += 1
-
-
+                                  this.SPtotaldamage += parseInt(response[11][j].stats.totalDamageDealtToChampions, 10)
+                                  this.SPcs += parseInt(response[11][j].stats.totalMinionsKilled, 10) + parseInt(response[11][i].stats.neutralMinionsKilled, 10)
+                                  this.SPvs += parseInt(response[11][j].stats.visionScore, 10)
+                                  this.SPkills += parseInt(response[11][j].stats.kills, 10)
+                                  this.SPdeaths += parseInt(response[11][j].stats.deaths, 10)
+                                  this.SPassists += parseInt(response[11][j].stats.assists, 10)
+                                  this.counter2 += 1
                                 }
                               }
 
@@ -406,13 +495,21 @@ export class SearchresultComponent implements OnInit {
 
 
                           }
-                          setTimeout('', 1000);
-                          console.log(this.counter)
-                          
+                          console.log("LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL")
+                          console.log(this.counter2)
+                          if (this.counter2 == 5) {
+                            this.SPtotaldamage = Math.round(this.SPtotaldamage / 5)
+                            this.SPcs = Math.round(this.SPcs / 5)
+                            this.SPvs = Math.round(this.SPvs / 5)
+                            this.SPkills = Math.round((this.SPkills / 5))
+                            this.SPdeaths = Math.round(this.SPdeaths / 5)
+                            this.SPassists = Math.round(this.SPassists / 5)
+                          }
                         })
 
-                        }
-          
+                      }
+                    })
+
 
                   })
 
@@ -421,6 +518,44 @@ export class SearchresultComponent implements OnInit {
 
                 })
               })
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             })
 
           })

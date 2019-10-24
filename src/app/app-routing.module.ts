@@ -3,10 +3,12 @@ import { Routes, RouterModule } from '@angular/router';
 import { SummonersearchComponent } from './summonersearch/summonersearch.component';
 import { SearchresultComponent } from './searchresult/searchresult.component';
 
+
 const routes: Routes = [
   { path: '', redirectTo: '/summonersearch',pathMatch: "full" },
   { path: 'summonersearch', component: SummonersearchComponent },
-  { path: 'searchresult/:result', component: SearchresultComponent }
+  { path: 'searchresult/:result', component: SearchresultComponent },
+
 ];
 
 @NgModule({
