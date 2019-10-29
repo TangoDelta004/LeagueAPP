@@ -1,8 +1,10 @@
 .vr { 
     border-left: 3px solid gray; 
-    height: 1000px; 
+    height: 2800px; 
     position:absolute; 
-    left: 50%; 
+    left: 50%;
+    top: 19%; 
+
 } 
 
 .picCenter {

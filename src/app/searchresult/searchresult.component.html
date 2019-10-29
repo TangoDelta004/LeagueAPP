@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col s12">
-        <h1 style="text-align:center">STATS:</h1>
+        <h1 style="text-align:center">Summary:</h1>
     </div>
     <hr>
     <div class="col s6">
@@ -32,18 +32,68 @@
         <br>
         <br>
         <br>
-        <h4 >Best Champion: {{SPbestchamp}}</h4>
-        <h4>Mastery: {{SPbestchampmastery}}</h4>
+        <h4 style='font-weight: bold'>Basics:</h4>
+        <hr>
+        <h5>Win-Loss Ratio: {{SPratio}}%</h5>
+        <h5>K/D/A: {{SPkills}}/{{SPdeaths}}/{{SPassists}}</h5>
+        <h5>Average Damage: {{SPtotaldamage}}</h5>
+        <hr>
         <br>
         <br>
-        <h4>Total Mastery: {{SPtotalmastery}}</h4>
+        <h4 style='font-weight: bold'>Champion Mastery:</h4>
+        <hr>
+        <h5>Best Champion: {{SPbestchamp}}</h5>
+        <h5>Best Champion Mastery: {{SPbestchampmastery}}</h5>
+        <h5>Total Champion Mastery: {{SPtotalmastery}}</h5>
+        <hr>
         <br>
         <br>
-        <h4>win-loss ratio: {{ratio}}%</h4>
+        <h4 style='font-weight: bold'>Income:</h4>
+        <hr>
+        <h5>Average Creep Score: {{SPcs}}</h5>
+        <h5>CS Per Min 0-10: {{SPcreepspermin10}}</h5>
+        <h5>CS Per Min 10-20: {{SPcreepspermin20}}</h5>
+        <h5>Gold Per Min 0-10: {{SPgoldpermin10}}</h5>
+        <h5>Gold Per Min 10-20: {{SPgoldpermin20}}</h5>
+        <h5>XP Per Min 0-10: {{SPxppermin10}}</h5>
+        <h5>XP Per Min 10-20: {{SPxppermin20}}</h5>
+        <hr>
         <br>
         <br>
-        <h4>K/D/A: {{SPkills}}/{{SPdeaths}}/{{SPassists}}</h4>
-        <h4>damage {{SPtotaldamage}}</h4>
+        <h4 style='font-weight: bold'>Vision:</h4>
+        <hr>
+        <h5>Average Vision Score: {{SPvs}}</h5>
+        <h5>Average Vision Wards Bought: {{SPvisionwards}}</h5>
+        <hr>
+        <br>
+        <br>
+        <h4 style='font-weight: bold'>Objective Pressure:</h4>
+        <hr>
+        <h5>Average Objective Damage: {{SPobjdamage}}</h5>
+        <h5>Average Turret Damage: {{SPturretdamage}}</h5>
+        <h5>Average Turret Kills: {{SPturretkills}}</h5>
+        <h5>Average Inhibitor Kills: {{SPinhibkills}}</h5>
+        <h5>Average Dragon Kills: {{SPdragonkills}}</h5>
+        <h5>Average Baron Kills: {{SPbaronkills}}</h5>
+        <h5>Average Rift Kills: {{SPriftkills}}</h5>
+        <hr>
+        <br>
+        <br>
+        <h4 style='font-weight: bold'>Difference:</h4>
+        <hr>
+        <h5>CS Difference 0-10: {{SPcsdiff10}}</h5>
+        <h5>CS Difference 10-20: {{SPcsdiff20}}</h5>
+        <h5>XP Difference 0-10: {{SPxpdiffpermin10}}</h5>
+        <h5>XP Difference 10-20: {{SPxpdiffpermin20}}</h5>
+        <hr>
+        <br>
+        <br>
+        <h4 style='font-weight: bold'>Style Points:</h4>
+        <hr>
+        <h5>Average Killing Spree: {{SPkillingspree}}</h5>
+        <h5>Average Multikill: {{SPmultikill}}</h5>
+
+        
 
 
     </div>
@@ -66,18 +116,68 @@
         <br>
         <br>
         <br>
-        <h4 >Best Champion: {{oppbestchamp}}</h4>
-        <h4>Mastery: {{oppbestchampmastery}}</h4>
+        <h4 style='font-weight: bold'>Basics:</h4>
+        <hr>
+        <h5>Win-Loss Ratio: {{oppratio}}%</h5>
+        <h5>K/D/A: {{oppkills}}/{{oppdeaths}}/{{oppassists}}</h5>
+        <h5>Average Damage: {{opptotaldamage}}</h5>
+        <hr>
         <br>
         <br>
-        <h4>Total Mastery: {{opptotalmastery}}</h4>
+        <h4 style='font-weight: bold'>Champion Mastery:</h4>
+        <hr>
+        <h5>Best Champion: {{oppbestchamp}}</h5>
+        <h5>Best Champion Mastery: {{oppbestchampmastery}}</h5>
+        <h5>Total Champion Mastery: {{opptotalmastery}}</h5>
+        <hr>
         <br>
         <br>
-        <h4>win-loss ratio: {{oppratio}}%</h4>
+        <h4 style='font-weight: bold'>Income:</h4>
+        <hr>
+        <h5>Average Creep Score: {{oppcs}}</h5>
+        <h5>CS Per Min 0-10: {{oppcreepspermin10}}</h5>
+        <h5>CS Per Min 10-20: {{oppcreepspermin20}}</h5>
+        <h5>Gold Per Min 0-10: {{oppgoldpermin10}}</h5>
+        <h5>Gold Per Min 10-20: {{oppgoldpermin20}}</h5>
+        <h5>XP Per Min 0-10: {{oppxppermin10}}</h5>
+        <h5>XP Per Min 10-20: {{oppxppermin20}}</h5>
+        <hr>
         <br>
         <br>
-        <h4>K/D/A: {{oppkills}}/{{oppdeaths}}/{{oppassists}}</h4>
-        <h4>damage {{opptotaldamage}}</h4>
+        <h4 style='font-weight: bold'>Vision:</h4>
+        <hr>
+        <h5>Average Vision Score: {{oppvs}}</h5>
+        <h5>Average Vision Wards Bought: {{oppvisionwards}}</h5>
+        <hr>
+        <br>
+        <br>
+        <h4 style='font-weight: bold'>Objective Pressure:</h4>
+        <hr>
+        <h5>Average Objective Damage: {{oppobjdamage}}</h5>
+        <h5>Average Turret Damage: {{oppturretdamage}}</h5>
+        <h5>Average Turret Kills: {{oppturretkills}}</h5>
+        <h5>Average Inhibitor Kills: {{oppinhibkills}}</h5>
+        <h5>Average Dragon Kills: {{oppdragonkills}}</h5>
+        <h5>Average Baron Kills: {{oppbaronkills}}</h5>
+        <h5>Average Rift Kills: {{oppriftkills}}</h5>
+        <hr>
+        <br>
+        <br>
+        <h4 style='font-weight: bold'>Difference:</h4>
+        <hr>
+        <h5>CS Difference 0-10: {{oppcsdiff10}}</h5>
+        <h5>CS Difference 10-20: {{oppcsdiff20}}</h5>
+        <h5>XP Difference 0-10: {{oppxpdiffpermin10}}</h5>
+        <h5>XP Difference 10-20: {{oppxpdiffpermin20}}</h5>
+        <hr>
+        <br>
+        <br>
+        <h4 style='font-weight: bold'>Style Points:</h4>
+        <hr>
+        <h5>Average Killing Spree: {{oppkillingspree}}</h5>
+        <h5>Average Multikill: {{oppmultikill}}</h5>
+
+
 
     </div>
     <div class="vr">&nbsp;</div>
@@ -85,7 +185,10 @@
 
 </div>
 
-
+<button (click)="details()" style="width: 100%; height:20%; position: absolute; left:0%" class="btn"
+    data-position="bottom" type="submit" name="action">Details Page
+    <i class="material-icons right">send</i>
+</button>
 
 <!-- <div *ngIf="resultsobtained" class="valign-wrapper">
         <h5>The WINNER IS: {{winner}}</h5>
