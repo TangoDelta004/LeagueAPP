@@ -61,7 +61,7 @@ export class SearchresultComponent implements OnInit {
   opptotaldamage = ''
   imageToShow = ''
 
-  key = 'RGAPI-6ae53a53-f886-4383-b608-2da86b23e6ac'
+  key = 'RGAPI-734537a7-d3c7-4172-a4ce-fe8ed1fdfabe'
 
   counter = 0
 
@@ -359,9 +359,9 @@ export class SearchresultComponent implements OnInit {
 
 
                     console.log(".")
-                    
+                    setTimeout('', 5000);
                  
-                        for (var k=0;k<20;k++){
+                        for (var k=0;k<15;k++){
                         
                         var gameid = response[0][k].gameId
 
@@ -396,6 +396,8 @@ export class SearchresultComponent implements OnInit {
                                   this.oppdeaths = response[11][j].stats.deaths
                                   this.oppassists = response[11][j].stats.assists
                                   this.counter += 1
+                                  console.log("AWKDASKDASKSAKDKDKASDKSAKDDSKDSAK")
+                                  console.log(this.oppkills)
 
 
                                 }
@@ -406,7 +408,7 @@ export class SearchresultComponent implements OnInit {
 
 
                           }
-                          setTimeout('', 1000);
+                          setTimeout('', 2000);
                           console.log(this.counter)
                           
                         })
