@@ -11,11 +11,13 @@ import { SearchresultComponent } from './searchresult/searchresult.component';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
     SummonersearchComponent,
-    SearchresultComponent
+    SearchresultComponent,
+  
   ],
   imports: [
     BrowserModule,
