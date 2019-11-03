@@ -4,7 +4,7 @@ var request = require('request');
 const fetch = require("node-fetch");
 
 
-key = 'RGAPI-f1fb6644-ac84-4213-b838-ded2258dc7ed'
+key = 'RGAPI-2c4c55c6-10ac-4951-b52e-d2b1a9b081a1'
 
 
 const summonername = 'Summonpwner'
@@ -15,10 +15,16 @@ console.log(url)
 P1bestchampmastery = 0
 P1bestchamp = ''
 P1totalchampmastery = 0
+P1tier = ''
+P1rank = ''
+P1ratio = 0
 
 P2bestchampmastery = 0
 P2bestchamp = ''
 P2totalchampmastery = 0
+P2tier = ''
+P2rank = ''
+P2ratio = 0
 
 
 
@@ -120,6 +126,46 @@ const getlistofchamps = (url, callback) => {
     })
 }
 
+const getp1elo = (url, callback) => {
+
+    request(url, (error, response, body) => {
+
+        const data = JSON.parse(body)
+
+
+
+        callback(undefined, {
+            data: data
+        })
+    })
+}
+const getp2elo = (url, callback) => {
+
+    request(url, (error, response, body) => {
+
+        const data = JSON.parse(body)
+
+
+
+        callback(undefined, {
+            data: data
+        })
+    })
+}
+const getp1matches = (url, callback) => {
+
+    request(url, (error, response, body) => {
+
+        const data = JSON.parse(body)
+        console.log(data)
+
+
+        callback(undefined, {
+            data: data
+        })
+    })
+}
+
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -193,6 +239,46 @@ getp1info(key, (error, data) => {
                     }
 
 
+                    url = `https://na1.api.riotgames.com/lol/league/v4/entries/by-summoner/${P1summonerid}?api_key=${key}`
+                    getp1elo(url, (error, data) => {
+                        for (var i in data.data) {
+                            if (data.data[i].queueType == "RANKED_SOLO_5x5") {
+
+                                this.P1rank = data.data[i].rank
+                                this.P1tier = data.data[i].tier
+                                this.P1ratio = Math.round((data.data[i].wins / (data.data[i].wins + data.data[i].losses)) * 100)
+
+                            }
+                        }
+                        console.log("P1 Rank: " + this.P1rank)
+                        console.log("P1 Tier: " + this.P1tier)
+                        console.log("P1 Ratio: " + this.P1ratio)
+
+                        url = `https://na1.api.riotgames.com/lol/league/v4/entries/by-summoner/${P2summonerid}?api_key=${key}`
+                        getp2elo(url, (error, data) => {
+                            for (var i in data.data) {
+                                if (data.data[i].queueType == "RANKED_SOLO_5x5") {
+                                    
+                                    this.P2rank = data.data[i].rank
+                                    this.P2tier = data.data[i].tier
+                                    this.P2ratio = Math.round((data.data[i].wins / (data.data[i].wins + data.data[i].losses)) * 100)
+
+                                }
+                            }
+                            console.log("P2 Rank: " + this.P2rank)
+                            console.log("P2 Tier: " + this.P2tier)
+                            console.log("P2 Ratio: " + this.P2ratio)
+                        
+                        
+                            url=  `https://na1.api.riotgames.com/lol/match/v4/matchlists/by-account/${P1accountid}?api_key=${key}`
+                            
+                            getp1matches(url, (error, data) => {
+                                console.log(data)
+                            
+                            })
+                        
+                        })
+                    })
 
 
                 })
@@ -217,16 +303,16 @@ getp1info(key, (error, data) => {
 
 
 app.use('/api/posts', (req, res, next) => {
-    
-    const obj=   {
-            P1bestchampmastery: this.P1bestchampmastery,
-            P1bestchamp: this.P1bestchamp,
-            P1totalchampmastery: this.P1totalchampmastery,
-            P2bestchampmastery: this.P2bestchampmastery,
-            P2bestchamp: this.P2bestchamp,
-            P2totalchampmastery: this.P2totalchampmastery
-        }
-    
+
+    const obj = {
+        P1bestchampmastery: this.P1bestchampmastery,
+        P1bestchamp: this.P1bestchamp,
+        P1totalchampmastery: this.P1totalchampmastery,
+        P2bestchampmastery: this.P2bestchampmastery,
+        P2bestchamp: this.P2bestchamp,
+        P2totalchampmastery: this.P2totalchampmastery
+    }
+
     res.json(obj)
 })
 

@@ -61,7 +61,7 @@ export class SearchresultComponent implements OnInit {
   opptotaldamage = ''
   imageToShow = ''
 
-  key = 'RGAPI-6ae53a53-f886-4383-b608-2da86b23e6ac'
+  key = 'RGAPI-2c4c55c6-10ac-4951-b52e-d2b1a9b081a1'
 
   counter = 0
 
