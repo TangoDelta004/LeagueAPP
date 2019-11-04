@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpRequest } from '@angular/common/http';
 import { map } from 'rxjs/operators'
 import { Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
+
 
 
 
@@ -14,19 +16,13 @@ export class SummonersearchComponent implements OnInit {
   passedname;
   constructor(private http: HttpClient,private router: Router) { }
 
+  post: {
+    name: string,
+    id : string
+
+  }
+
   ngOnInit() {
-    const request=this.http.get('http://localhost:3000/api/posts')
-    request.pipe(map(responseData => {
-      const array = []
-      console.log("HELLLOOOOOO")
-      console.log(responseData)
-      for (const key in responseData) {
-        array.push(responseData[key])
-      }
-      return array
-    })).subscribe((response) => {
-      console.log(response[0].id)
-  })
   }
   
   
@@ -34,6 +30,11 @@ export class SummonersearchComponent implements OnInit {
     var summonername=(<HTMLInputElement> document.getElementById("textarea1")).value;
 
     this.passedname=summonername  
+    const post1 = { name: summonername, id: "hello"}
+    
+    const request=this.http.post('http://localhost:3000/api/posts',post1).subscribe((responseData)=>{
+    
+    })
     this.router.navigate(['/searchresult', this.passedname])
  
   }

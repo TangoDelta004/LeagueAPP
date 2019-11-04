@@ -1,15 +1,15 @@
 var express = require('express');
 const app = express()
 var request = require('request');
-const fetch = require("node-fetch");
+const bodyParser = require('body-parser')
 
 
-key = 'RGAPI-2c4c55c6-10ac-4951-b52e-d2b1a9b081a1'
+
+key = 'RGAPI-24c63c4b-cab9-49e4-acdc-f77353cc2ac0'
 
 
-const summonername = 'Summonpwner'
-var url = `https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/${summonername}?api_key=${key}`
-console.log(url)
+
+
 
 
 P1bestchampmastery = 0
@@ -157,7 +157,22 @@ const getp1matches = (url, callback) => {
     request(url, (error, response, body) => {
 
         const data = JSON.parse(body)
-        console.log(data)
+        //console.log(data)
+
+
+        callback(undefined, {
+            data: data
+        })
+    })
+}
+
+
+const getp1game = (url, callback) => {
+
+    request(url, (error, response, body) => {
+
+        const data = JSON.parse(body)
+        //console.log(data)
 
 
         callback(undefined, {
@@ -184,8 +199,12 @@ const getp1matches = (url, callback) => {
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 
-
+//function dostuff() {
+const summonername = 'Summonpwner'
+var url = `https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/${summonername}?api_key=${key}`
+console.log(url)
 getp1info(key, (error, data) => {
+    P1summonername= "Summonpwner"
     P1summonerid = data.P1summonerid
     P1accountid = data.P1accountid
     url = `https://na1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/${P1summonerid}?api_key=${key}`
@@ -258,7 +277,7 @@ getp1info(key, (error, data) => {
                         getp2elo(url, (error, data) => {
                             for (var i in data.data) {
                                 if (data.data[i].queueType == "RANKED_SOLO_5x5") {
-                                    
+
                                     this.P2rank = data.data[i].rank
                                     this.P2tier = data.data[i].tier
                                     this.P2ratio = Math.round((data.data[i].wins / (data.data[i].wins + data.data[i].losses)) * 100)
@@ -268,15 +287,31 @@ getp1info(key, (error, data) => {
                             console.log("P2 Rank: " + this.P2rank)
                             console.log("P2 Tier: " + this.P2tier)
                             console.log("P2 Ratio: " + this.P2ratio)
-                        
-                        
-                            url=  `https://na1.api.riotgames.com/lol/match/v4/matchlists/by-account/${P1accountid}?api_key=${key}`
-                            
+
+
+
+                            url = `https://na1.api.riotgames.com/lol/match/v4/matchlists/by-account/${P1accountid}?api_key=${key}`
+
                             getp1matches(url, (error, data) => {
-                                console.log(data)
-                            
+                                //console.log(data.data.matches[0])
+                                //  for (var i = 0; i < 1; i++){
+                                console.log(data.data.matches[i].gameId)
+                                p1gameid = data.data.matches[i].gameId
+                                url = `https://na1.api.riotgames.com/lol/match/v4/matches/${p1gameid}?api_key=${key}`
+
+                                getp1game(url, (error, data) => {
+                                    console.log(P1summonername)
+                                    for (var i = 0; i < data.data.participantIdentities.length; i++) {
+                                        if (P1summonername == data.data.participantIdentities[i].player.summonerName) {
+                                            console.log(data.data.participantIdentities[i].participantId)
+                                        }
+                                    }
+                                })
+
+                                //  }
+
                             })
-                        
+
                         })
                     })
 
@@ -299,8 +334,17 @@ getp1info(key, (error, data) => {
 
 
 })
+//}
+app.use(bodyParser.json())
 
 
+app.post('/api/posts', (req, res, next) => {
+    const post = req.body
+    console.log("HERE")
+    console.log(post)
+    //dostuff()
+
+})
 
 app.use('/api/posts', (req, res, next) => {
 
