@@ -23,6 +23,9 @@ export class SummonersearchComponent implements OnInit {
   }
 
   ngOnInit() {
+    const request2=this.http.get('http://localhost:3000/api/posts').subscribe((responseData)=>{
+      console.log(responseData)
+    })
   }
   
   
