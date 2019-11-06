@@ -3,6 +3,7 @@ import { HttpClient, HttpRequest } from '@angular/common/http';
 import { map } from 'rxjs/operators'
 import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
+import { FunctionsService } from "../functions.service";
 
 
 
@@ -14,32 +15,48 @@ import { Title } from '@angular/platform-browser';
 })
 export class SummonersearchComponent implements OnInit {
   passedname;
-  constructor(private http: HttpClient,private router: Router) { }
+  base = true;
+  loading = false
+  dataobj;
+
+  constructor(private http: HttpClient, private router: Router, private functions: FunctionsService) { }
+
+
 
   post: {
     name: string,
-    id : string
+    id: string
 
   }
 
   ngOnInit() {
-    const request2=this.http.get('http://localhost:3000/api/posts').subscribe((responseData)=>{
-      console.log(responseData)
-    })
+    this.functions.currentMessage.subscribe(dataobj => this.dataobj = dataobj)
   }
-  
-  
-  private async search(){
-    var summonername=(<HTMLInputElement> document.getElementById("textarea1")).value;
 
-    this.passedname=summonername  
-    const post1 = { name: summonername, id: "hello"}
+
+  private async search() {
+    var P1summonername = (<HTMLInputElement>document.getElementById("textarea1")).value;
+    var P2summonername = (<HTMLInputElement>document.getElementById("textarea2")).value;
+    // this.base = false
+    // this.loading = true
     
-    const request=this.http.post('http://localhost:3000/api/posts',post1).subscribe((responseData)=>{
-    
+    const post1 = { name1: P1summonername, name2: P2summonername }
+
+    const request = this.http.post('http://localhost:3000/api/posts', post1).subscribe((responseData) => {
+      console.log("HELLOOOOOO")
+      const request2 = this.http.get('http://localhost:3000/api/posts').subscribe((responseData) => {
+       //console.log(responseData)
+       
+       this.newMessage(responseData)
+       this.router.navigate(['/searchresult'])
+      })
     })
-    this.router.navigate(['/searchresult', this.passedname])
  
+
+
+  }
+  newMessage(responseData) {
+    this.functions.changeMessage(responseData)
   }
 
 }

@@ -4,35 +4,25 @@ import { ActivatedRoute } from '@angular/router';
 import { HttpClient, HttpRequest } from '@angular/common/http';
 import { map } from 'rxjs/operators'
 import { Observable, of } from 'rxjs';
-
+import { BehaviorSubject } from 'rxjs';
 
 
 @Injectable({
   providedIn: 'root'
 })
-
 export class FunctionsService {
+  
+  private messageSource = new BehaviorSubject('default message');
+  currentMessage = this.messageSource.asObservable();
 
-  public responsedata=[]  
   constructor(private http: HttpClient) { }
   
+  changeMessage(message) {
+    this.messageSource.next(message)
+  }
 
-  getresponsedata(URL: string){
-   
-    var request= this.http.get(URL)
-    var res
-    request.pipe(map(responseData => {
-      const array = []
-      for (const key in responseData) {
-        array.push(responseData[key])
-      }
-      return array
-    })).subscribe((response) => {
-      this.responsedata=response
-      console.log(this.responsedata)
-      
-    })
+
  
    
-  }
 }
+
