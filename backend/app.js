@@ -40,6 +40,8 @@ function dostuff2(res){
 function checkifdone(res){
     console.log("checking.....")
     if (finish1 == true && finish2 == true){
+        finish1 = false
+        finish2 = false
         console.log("SENDING")
         res.send({dummy:'dummy'})
         return
@@ -84,6 +86,7 @@ function dostuff(res,post) {
 
             P1totalchampmastery = 0
             for (i in data.data) {
+                
                 P1totalchampmastery += data.data[i].championPoints
             }
             console.log(P1totalchampmastery)
@@ -123,7 +126,7 @@ function dostuff(res,post) {
                     P2bestchampmastery = numberWithCommas(P2bestchampmastery)
                     console.log("P2 BEST CHAMP MASTERY: " + P2bestchampmastery)
 
-                    P1totalchampmastery = numberWithCommas(P2totalchampmastery)
+                    P2totalchampmastery = numberWithCommas(P2totalchampmastery)
                     console.log("P2 TOTAL CHAMP MASTERY: " + P2totalchampmastery)
 
 
@@ -830,6 +833,7 @@ app.post('/api/posts', (req, res, next) => {
 app.use('/api/posts', (req, res, next) => {
 
     const obj = {
+        P1summonername:P1summonername,
         P1bestchampmastery: P1bestchampmastery,
         P1bestchamp: P1bestchamp,
         P1totalchampmastery: P1totalchampmastery,
@@ -874,6 +878,7 @@ app.use('/api/posts', (req, res, next) => {
         P1xpdiffpermin10: P1xpdiffpermin10,
         P1xpdiffpermin20: P1xpdiffpermin20,
 
+        P2summonername:P2summonername,
         P2kills: P2kills,
         P2deaths: P2deaths,
         P2assists: P2assists,

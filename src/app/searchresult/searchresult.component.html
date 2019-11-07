@@ -4,10 +4,10 @@
     </div>
     <hr>
     <div class="col s6">
-        <h3 style="text-align:center">summonpwner</h3>
+        <h3 style="text-align:center">{{P1summonername}}</h3>
     </div>
     <div class="col s6">
-        <h3 style="text-align:center">{{summonername}}</h3>
+        <h3 style="text-align:center">{{P2summonername}}</h3>
     </div>
 
 
@@ -16,82 +16,82 @@
     <div class="col s6">
         <br>
         <br>
-        <img *ngIf="iron" class=picCenter src="assets/Emblem_Iron.png">
-        <img *ngIf="bronze" class=picCenter src="assets/Emblem_Brozne.png">
-        <img *ngIf="silver" class=picCenter src="assets/Emblem_Silver.png">
-        <img *ngIf="gold" class=picCenter src="assets/Emblem_Gold.png">
-        <img *ngIf="plat" class=picCenter src="assets/Emblem_Platinum.png">
-        <img *ngIf="diamond" class=picCenter src="assets/Emblem_Diamond.png">
-        <img *ngIf="master" class=picCenter src="assets/Emblem_Master.png">
-        <img *ngIf="grandmaster" class=picCenter src="assets/Emblem_Grandmaster.png">
-        <img *ngIf="challenger" class=picCenter src="assets/Emblem_Challenger.png">
+        <img *ngIf="P1iron" class=picCenter src="assets/Emblem_Iron.png">
+        <img *ngIf="P1bronze" class=picCenter src="assets/Emblem_Brozne.png">
+        <img *ngIf="P1silver" class=picCenter src="assets/Emblem_Silver.png">
+        <img *ngIf="P1gold" class=picCenter src="assets/Emblem_Gold.png">
+        <img *ngIf="P1plat" class=picCenter src="assets/Emblem_Platinum.png">
+        <img *ngIf="P1diamond" class=picCenter src="assets/Emblem_Diamond.png">
+        <img *ngIf="P1master" class=picCenter src="assets/Emblem_Master.png">
+        <img *ngIf="P1grandmaster" class=picCenter src="assets/Emblem_Grandmaster.png">
+        <img *ngIf="P1challenger" class=picCenter src="assets/Emblem_Challenger.png">
         <br>
         <br>
-        <h4 style="text-align:center">{{summonpwnertier}} {{summonpwnerrank}}</h4>
+        <h4 style="text-align:center">{{P1tier}} {{P1rank}}</h4>
         <hr>
         <br>
         <br>
         <br>
         <h4 style='font-weight: bold'>Basics:</h4>
         <hr>
-        <h5>Win-Loss Ratio: {{SPratio}}%</h5>
-        <h5>K/D/A: {{SPkills}}/{{SPdeaths}}/{{SPassists}}</h5>
-        <h5>Average Damage: {{SPtotaldamage}}</h5>
+        <h5>Win-Loss Ratio: {{P1ratio}}%</h5>
+        <h5>K/D/A: {{P1kills}}/{{P1deaths}}/{{P1assists}}</h5>
+        <h5>Average Damage: {{P1totaldamage}}</h5>
         <hr>
         <br>
         <br>
         <h4 style='font-weight: bold'>Champion Mastery:</h4>
         <hr>
-        <h5>Best Champion: {{SPbestchamp}}</h5>
-        <h5>Best Champion Mastery: {{SPbestchampmastery}}</h5>
-        <h5>Total Champion Mastery: {{SPtotalmastery}}</h5>
+        <h5>Best Champion: {{P1bestchamp}}</h5>
+        <h5>Best Champion Mastery: {{P1bestchampmastery}}</h5>
+        <h5>Total Champion Mastery: {{P1totalmastery}}</h5>
         <hr>
         <br>
         <br>
         <h4 style='font-weight: bold'>Income:</h4>
         <hr>
-        <h5>Average Creep Score: {{SPcs}}</h5>
-        <h5>CS Per Min 0-10: {{SPcreepspermin10}}</h5>
-        <h5>CS Per Min 10-20: {{SPcreepspermin20}}</h5>
-        <h5>Gold Per Min 0-10: {{SPgoldpermin10}}</h5>
-        <h5>Gold Per Min 10-20: {{SPgoldpermin20}}</h5>
-        <h5>XP Per Min 0-10: {{SPxppermin10}}</h5>
-        <h5>XP Per Min 10-20: {{SPxppermin20}}</h5>
+        <h5>Average Creep Score: {{P1cs}}</h5>
+        <h5>CS Per Min 0-10: {{P1creepP1ermin10}}</h5>
+        <h5>CS Per Min 10-20: {{P1creepP1ermin20}}</h5>
+        <h5>Gold Per Min 0-10: {{P1goldpermin10}}</h5>
+        <h5>Gold Per Min 10-20: {{P1goldpermin20}}</h5>
+        <h5>XP Per Min 0-10: {{P1xppermin10}}</h5>
+        <h5>XP Per Min 10-20: {{P1xppermin20}}</h5>
         <hr>
         <br>
         <br>
         <h4 style='font-weight: bold'>Vision:</h4>
         <hr>
-        <h5>Average Vision Score: {{SPvs}}</h5>
-        <h5>Average Vision Wards Bought: {{SPvisionwards}}</h5>
+        <h5>Average Vision Score: {{P1vs}}</h5>
+        <h5>Average Vision Wards Bought: {{P1visionwards}}</h5>
         <hr>
         <br>
         <br>
         <h4 style='font-weight: bold'>Objective Pressure:</h4>
         <hr>
-        <h5>Average Objective Damage: {{SPobjdamage}}</h5>
-        <h5>Average Turret Damage: {{SPturretdamage}}</h5>
-        <h5>Average Turret Kills: {{SPturretkills}}</h5>
-        <h5>Average Inhibitor Kills: {{SPinhibkills}}</h5>
-        <h5>Average Dragon Kills: {{SPdragonkills}}</h5>
-        <h5>Average Baron Kills: {{SPbaronkills}}</h5>
-        <h5>Average Rift Kills: {{SPriftkills}}</h5>
+        <h5>Average Objective Damage: {{P1objdamage}}</h5>
+        <h5>Average Turret Damage: {{P1turretdamage}}</h5>
+        <h5>Average Turret Kills: {{P1turretkills}}</h5>
+        <h5>Average Inhibitor Kills: {{P1inhibkills}}</h5>
+        <h5>Average Dragon Kills: {{P1dragonkills}}</h5>
+        <h5>Average Baron Kills: {{P1baronkills}}</h5>
+        <h5>Average Rift Kills: {{P1riftkills}}</h5>
         <hr>
         <br>
         <br>
         <h4 style='font-weight: bold'>Difference:</h4>
         <hr>
-        <h5>CS Difference 0-10: {{SPcsdiff10}}</h5>
-        <h5>CS Difference 10-20: {{SPcsdiff20}}</h5>
-        <h5>XP Difference 0-10: {{SPxpdiffpermin10}}</h5>
-        <h5>XP Difference 10-20: {{SPxpdiffpermin20}}</h5>
+        <h5>CS Difference 0-10: {{P1csdiff10}}</h5>
+        <h5>CS Difference 10-20: {{P1csdiff20}}</h5>
+        <h5>XP Difference 0-10: {{P1xpdiffpermin10}}</h5>
+        <h5>XP Difference 10-20: {{P1xpdiffpermin20}}</h5>
         <hr>
         <br>
         <br>
         <h4 style='font-weight: bold'>Style Points:</h4>
         <hr>
-        <h5>Average Killing Spree: {{SPkillingspree}}</h5>
-        <h5>Average Multikill: {{SPmultikill}}</h5>
+        <h5>Average Killing Spree: {{P1killingspree}}</h5>
+        <h5>Average Multikill: {{P1multikill}}</h5>
 
         
 
@@ -100,87 +100,89 @@
     <div class="col s6">
         <br>
         <br>
-        <img *ngIf="oppiron" class=picCenter src="assets/Emblem_Iron.png">
-        <img *ngIf="oppbronze" class=picCenter src="assets/Emblem_Brozne.png">
-        <img *ngIf="oppsilver" class=picCenter src="assets/Emblem_Silver.png">
-        <img *ngIf="oppgold" class=picCenter src="assets/Emblem_Gold.png">
-        <img *ngIf="oppplat" class=picCenter src="assets/Emblem_Platinum.png">
-        <img *ngIf="oppdiamond" class=picCenter src="assets/Emblem_Diamond.png">
-        <img *ngIf="oppmaster" class=picCenter src="assets/Emblem_Master.png">
-        <img *ngIf="oppgrandmaster" class=picCenter src="assets/Emblem_Grandmaster.png">
-        <img *ngIf="oppchallenger" class=picCenter src="assets/Emblem_Challenger.png">
+        <img *ngIf="P2iron" class=picCenter src="assets/Emblem_Iron.png">
+        <img *ngIf="P2bronze" class=picCenter src="assets/Emblem_Brozne.png">
+        <img *ngIf="P2silver" class=picCenter src="assets/Emblem_Silver.png">
+        <img *ngIf="P2gold" class=picCenter src="assets/Emblem_Gold.png">
+        <img *ngIf="P2plat" class=picCenter src="assets/Emblem_Platinum.png">
+        <img *ngIf="P2diamond" class=picCenter src="assets/Emblem_Diamond.png">
+        <img *ngIf="P2master" class=picCenter src="assets/Emblem_Master.png">
+        <img *ngIf="P2grandmaster" class=picCenter src="assets/Emblem_Grandmaster.png">
+        <img *ngIf="P2challenger" class=picCenter src="assets/Emblem_Challenger.png">
         <br>
         <br>
-        <h4 style="text-align:center">{{opponenttier}} {{opprank}}</h4>
+        <h4 style="text-align:center">{{P2tier}} {{P2rank}}</h4>
         <hr>
         <br>
         <br>
         <br>
         <h4 style='font-weight: bold'>Basics:</h4>
         <hr>
-        <h5>Win-Loss Ratio: {{oppratio}}%</h5>
-        <h5>K/D/A: {{oppkills}}/{{oppdeaths}}/{{oppassists}}</h5>
-        <h5>Average Damage: {{opptotaldamage}}</h5>
+        <h5>Win-Loss Ratio: {{P2ratio}}%</h5>
+        <h5>K/D/A: {{P2kills}}/{{P2deaths}}/{{P2assists}}</h5>
+        <h5>Average Damage: {{P2totaldamage}}</h5>
         <hr>
         <br>
         <br>
         <h4 style='font-weight: bold'>Champion Mastery:</h4>
         <hr>
-        <h5>Best Champion: {{oppbestchamp}}</h5>
-        <h5>Best Champion Mastery: {{oppbestchampmastery}}</h5>
-        <h5>Total Champion Mastery: {{opptotalmastery}}</h5>
+        <h5>Best Champion: {{P2bestchamp}}</h5>
+        <h5>Best Champion Mastery: {{P2bestchampmastery}}</h5>
+        <h5>Total Champion Mastery: {{P2totalmastery}}</h5>
         <hr>
         <br>
         <br>
         <h4 style='font-weight: bold'>Income:</h4>
         <hr>
-        <h5>Average Creep Score: {{oppcs}}</h5>
-        <h5>CS Per Min 0-10: {{oppcreepspermin10}}</h5>
-        <h5>CS Per Min 10-20: {{oppcreepspermin20}}</h5>
-        <h5>Gold Per Min 0-10: {{oppgoldpermin10}}</h5>
-        <h5>Gold Per Min 10-20: {{oppgoldpermin20}}</h5>
-        <h5>XP Per Min 0-10: {{oppxppermin10}}</h5>
-        <h5>XP Per Min 10-20: {{oppxppermin20}}</h5>
+        <h5>Average Creep Score: {{P2cs}}</h5>
+        <h5>CS Per Min 0-10: {{P2creepspermin10}}</h5>
+        <h5>CS Per Min 10-20: {{P2creepspermin20}}</h5>
+        <h5>Gold Per Min 0-10: {{P2goldpermin10}}</h5>
+        <h5>Gold Per Min 10-20: {{P2goldpermin20}}</h5>
+        <h5>XP Per Min 0-10: {{P2xppermin10}}</h5>
+        <h5>XP Per Min 10-20: {{P2xppermin20}}</h5>
         <hr>
         <br>
         <br>
         <h4 style='font-weight: bold'>Vision:</h4>
         <hr>
-        <h5>Average Vision Score: {{oppvs}}</h5>
-        <h5>Average Vision Wards Bought: {{oppvisionwards}}</h5>
+        <h5>Average Vision Score: {{P2vs}}</h5>
+        <h5>Average Vision Wards Bought: {{P2visionwards}}</h5>
         <hr>
         <br>
         <br>
         <h4 style='font-weight: bold'>Objective Pressure:</h4>
         <hr>
-        <h5>Average Objective Damage: {{oppobjdamage}}</h5>
-        <h5>Average Turret Damage: {{oppturretdamage}}</h5>
-        <h5>Average Turret Kills: {{oppturretkills}}</h5>
-        <h5>Average Inhibitor Kills: {{oppinhibkills}}</h5>
-        <h5>Average Dragon Kills: {{oppdragonkills}}</h5>
-        <h5>Average Baron Kills: {{oppbaronkills}}</h5>
-        <h5>Average Rift Kills: {{oppriftkills}}</h5>
+        <h5>Average Objective Damage: {{P2objdamage}}</h5>
+        <h5>Average Turret Damage: {{P2turretdamage}}</h5>
+        <h5>Average Turret Kills: {{P2turretkills}}</h5>
+        <h5>Average Inhibitor Kills: {{P2inhibkills}}</h5>
+        <h5>Average Dragon Kills: {{P2dragonkills}}</h5>
+        <h5>Average Baron Kills: {{P2baronkills}}</h5>
+        <h5>Average Rift Kills: {{P2riftkills}}</h5>
         <hr>
         <br>
         <br>
         <h4 style='font-weight: bold'>Difference:</h4>
         <hr>
-        <h5>CS Difference 0-10: {{oppcsdiff10}}</h5>
-        <h5>CS Difference 10-20: {{oppcsdiff20}}</h5>
-        <h5>XP Difference 0-10: {{oppxpdiffpermin10}}</h5>
-        <h5>XP Difference 10-20: {{oppxpdiffpermin20}}</h5>
+        <h5>CS Difference 0-10: {{P2csdiff10}}</h5>
+        <h5>CS Difference 10-20: {{P2csdiff20}}</h5>
+        <h5>XP Difference 0-10: {{P2xpdiffpermin10}}</h5>
+        <h5>XP Difference 10-20: {{P2xpdiffpermin20}}</h5>
         <hr>
         <br>
         <br>
         <h4 style='font-weight: bold'>Style Points:</h4>
         <hr>
-        <h5>Average Killing Spree: {{oppkillingspree}}</h5>
-        <h5>Average Multikill: {{oppmultikill}}</h5>
+        <h5>Average Killing Spree: {{P2killingspree}}</h5>
+        <h5>Average Multikill: {{P2multikill}}</h5>
 
 
 
     </div>
-    <div class="vr">&nbsp;</div>
+   
+   
+    <!-- <div class="vr">&nbsp;</div> -->
 
 
 </div>

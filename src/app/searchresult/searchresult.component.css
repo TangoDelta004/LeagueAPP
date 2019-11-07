@@ -1,9 +1,9 @@
 .vr { 
     border-left: 3px solid gray; 
-    height: 2800px; 
+    height: 100%; 
     position:absolute; 
     left: 50%;
-    top: 19%; 
+    top: 30%; 
 
 } 
 

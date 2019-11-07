@@ -14,6 +14,9 @@ export class FunctionsService {
   
   private messageSource = new BehaviorSubject('default message');
   currentMessage = this.messageSource.asObservable();
+  
+
+  
 
   constructor(private http: HttpClient) { }
   
@@ -21,8 +24,14 @@ export class FunctionsService {
     this.messageSource.next(message)
   }
 
-
+  storeValue(responseData){
+    var dataobj = responseData
+    localStorage.setItem("dataobj", JSON.stringify(dataobj))
+  }
  
+  getValue(){
+    return JSON.parse(localStorage.getItem("dataobj")) 
+  }
    
 }
 
