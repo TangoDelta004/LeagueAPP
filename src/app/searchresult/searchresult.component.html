@@ -1,194 +1,839 @@
-<div class="row">
-    <div class="col s12">
-        <h1 style="text-align:center">Summary:</h1>
-    </div>
-    <hr>
-    <div class="col s6">
-        <h3 style="text-align:center">{{P1summonername}}</h3>
-    </div>
-    <div class="col s6">
-        <h3 style="text-align:center">{{P2summonername}}</h3>
-    </div>
+<div style>
+    <br>
+    <br>
+    <br>
+    <br>
+    <mat-tab-group animationDuration="300ms" mat-align-tabs="center">
 
 
-    <hr>
-
-    <div class="col s6">
-        <br>
-        <br>
-        <img *ngIf="P1iron" class=picCenter src="assets/Emblem_Iron.png">
-        <img *ngIf="P1bronze" class=picCenter src="assets/Emblem_Brozne.png">
-        <img *ngIf="P1silver" class=picCenter src="assets/Emblem_Silver.png">
-        <img *ngIf="P1gold" class=picCenter src="assets/Emblem_Gold.png">
-        <img *ngIf="P1plat" class=picCenter src="assets/Emblem_Platinum.png">
-        <img *ngIf="P1diamond" class=picCenter src="assets/Emblem_Diamond.png">
-        <img *ngIf="P1master" class=picCenter src="assets/Emblem_Master.png">
-        <img *ngIf="P1grandmaster" class=picCenter src="assets/Emblem_Grandmaster.png">
-        <img *ngIf="P1challenger" class=picCenter src="assets/Emblem_Challenger.png">
-        <br>
-        <br>
-        <h4 style="text-align:center">{{P1tier}} {{P1rank}}</h4>
-        <hr>
-        <br>
-        <br>
-        <br>
-        <h4 style='font-weight: bold'>Basics:</h4>
-        <hr>
-        <h5>Win-Loss Ratio: {{P1ratio}}%</h5>
-        <h5>K/D/A: {{P1kills}}/{{P1deaths}}/{{P1assists}}</h5>
-        <h5>Average Damage: {{P1totaldamage}}</h5>
-        <hr>
-        <br>
-        <br>
-        <h4 style='font-weight: bold'>Champion Mastery:</h4>
-        <hr>
-        <h5>Best Champion: {{P1bestchamp}}</h5>
-        <h5>Best Champion Mastery: {{P1bestchampmastery}}</h5>
-        <h5>Total Champion Mastery: {{P1totalmastery}}</h5>
-        <hr>
-        <br>
-        <br>
-        <h4 style='font-weight: bold'>Income:</h4>
-        <hr>
-        <h5>Average Creep Score: {{P1cs}}</h5>
-        <h5>CS Per Min 0-10: {{P1creepP1ermin10}}</h5>
-        <h5>CS Per Min 10-20: {{P1creepP1ermin20}}</h5>
-        <h5>Gold Per Min 0-10: {{P1goldpermin10}}</h5>
-        <h5>Gold Per Min 10-20: {{P1goldpermin20}}</h5>
-        <h5>XP Per Min 0-10: {{P1xppermin10}}</h5>
-        <h5>XP Per Min 10-20: {{P1xppermin20}}</h5>
-        <hr>
-        <br>
-        <br>
-        <h4 style='font-weight: bold'>Vision:</h4>
-        <hr>
-        <h5>Average Vision Score: {{P1vs}}</h5>
-        <h5>Average Vision Wards Bought: {{P1visionwards}}</h5>
-        <hr>
-        <br>
-        <br>
-        <h4 style='font-weight: bold'>Objective Pressure:</h4>
-        <hr>
-        <h5>Average Objective Damage: {{P1objdamage}}</h5>
-        <h5>Average Turret Damage: {{P1turretdamage}}</h5>
-        <h5>Average Turret Kills: {{P1turretkills}}</h5>
-        <h5>Average Inhibitor Kills: {{P1inhibkills}}</h5>
-        <h5>Average Dragon Kills: {{P1dragonkills}}</h5>
-        <h5>Average Baron Kills: {{P1baronkills}}</h5>
-        <h5>Average Rift Kills: {{P1riftkills}}</h5>
-        <hr>
-        <br>
-        <br>
-        <h4 style='font-weight: bold'>Difference:</h4>
-        <hr>
-        <h5>CS Difference 0-10: {{P1csdiff10}}</h5>
-        <h5>CS Difference 10-20: {{P1csdiff20}}</h5>
-        <h5>XP Difference 0-10: {{P1xpdiffpermin10}}</h5>
-        <h5>XP Difference 10-20: {{P1xpdiffpermin20}}</h5>
-        <hr>
-        <br>
-        <br>
-        <h4 style='font-weight: bold'>Style Points:</h4>
-        <hr>
-        <h5>Average Killing Spree: {{P1killingspree}}</h5>
-        <h5>Average Multikill: {{P1multikill}}</h5>
-
-        
+        <mat-tab label="Summary">
 
 
-    </div>
-    <div class="col s6">
-        <br>
-        <br>
-        <img *ngIf="P2iron" class=picCenter src="assets/Emblem_Iron.png">
-        <img *ngIf="P2bronze" class=picCenter src="assets/Emblem_Brozne.png">
-        <img *ngIf="P2silver" class=picCenter src="assets/Emblem_Silver.png">
-        <img *ngIf="P2gold" class=picCenter src="assets/Emblem_Gold.png">
-        <img *ngIf="P2plat" class=picCenter src="assets/Emblem_Platinum.png">
-        <img *ngIf="P2diamond" class=picCenter src="assets/Emblem_Diamond.png">
-        <img *ngIf="P2master" class=picCenter src="assets/Emblem_Master.png">
-        <img *ngIf="P2grandmaster" class=picCenter src="assets/Emblem_Grandmaster.png">
-        <img *ngIf="P2challenger" class=picCenter src="assets/Emblem_Challenger.png">
-        <br>
-        <br>
-        <h4 style="text-align:center">{{P2tier}} {{P2rank}}</h4>
-        <hr>
-        <br>
-        <br>
-        <br>
-        <h4 style='font-weight: bold'>Basics:</h4>
-        <hr>
-        <h5>Win-Loss Ratio: {{P2ratio}}%</h5>
-        <h5>K/D/A: {{P2kills}}/{{P2deaths}}/{{P2assists}}</h5>
-        <h5>Average Damage: {{P2totaldamage}}</h5>
-        <hr>
-        <br>
-        <br>
-        <h4 style='font-weight: bold'>Champion Mastery:</h4>
-        <hr>
-        <h5>Best Champion: {{P2bestchamp}}</h5>
-        <h5>Best Champion Mastery: {{P2bestchampmastery}}</h5>
-        <h5>Total Champion Mastery: {{P2totalmastery}}</h5>
-        <hr>
-        <br>
-        <br>
-        <h4 style='font-weight: bold'>Income:</h4>
-        <hr>
-        <h5>Average Creep Score: {{P2cs}}</h5>
-        <h5>CS Per Min 0-10: {{P2creepspermin10}}</h5>
-        <h5>CS Per Min 10-20: {{P2creepspermin20}}</h5>
-        <h5>Gold Per Min 0-10: {{P2goldpermin10}}</h5>
-        <h5>Gold Per Min 10-20: {{P2goldpermin20}}</h5>
-        <h5>XP Per Min 0-10: {{P2xppermin10}}</h5>
-        <h5>XP Per Min 10-20: {{P2xppermin20}}</h5>
-        <hr>
-        <br>
-        <br>
-        <h4 style='font-weight: bold'>Vision:</h4>
-        <hr>
-        <h5>Average Vision Score: {{P2vs}}</h5>
-        <h5>Average Vision Wards Bought: {{P2visionwards}}</h5>
-        <hr>
-        <br>
-        <br>
-        <h4 style='font-weight: bold'>Objective Pressure:</h4>
-        <hr>
-        <h5>Average Objective Damage: {{P2objdamage}}</h5>
-        <h5>Average Turret Damage: {{P2turretdamage}}</h5>
-        <h5>Average Turret Kills: {{P2turretkills}}</h5>
-        <h5>Average Inhibitor Kills: {{P2inhibkills}}</h5>
-        <h5>Average Dragon Kills: {{P2dragonkills}}</h5>
-        <h5>Average Baron Kills: {{P2baronkills}}</h5>
-        <h5>Average Rift Kills: {{P2riftkills}}</h5>
-        <hr>
-        <br>
-        <br>
-        <h4 style='font-weight: bold'>Difference:</h4>
-        <hr>
-        <h5>CS Difference 0-10: {{P2csdiff10}}</h5>
-        <h5>CS Difference 10-20: {{P2csdiff20}}</h5>
-        <h5>XP Difference 0-10: {{P2xpdiffpermin10}}</h5>
-        <h5>XP Difference 10-20: {{P2xpdiffpermin20}}</h5>
-        <hr>
-        <br>
-        <br>
-        <h4 style='font-weight: bold'>Style Points:</h4>
-        <hr>
-        <h5>Average Killing Spree: {{P2killingspree}}</h5>
-        <h5>Average Multikill: {{P2multikill}}</h5>
+            <div class="row card-panel teal lighten-5">
+                <div class="col s12">
+                    <h2 style="text-align:center">Summary</h2>
+                </div>
+                <hr>
 
 
 
-    </div>
-   
-   
-    <!-- <div class="vr">&nbsp;</div> -->
+                <div class="col s6 card-panel teal lighten-2">
+                    <h3 style="text-align:center">{{P1summonername}}</h3>
+                </div>
+                <div class="col s6 card-panel teal lighten-2">
+                    <h3 style="text-align:center">{{P2summonername}}</h3>
+                </div>
 
 
+
+                <hr>
+
+                <div class="col s6 card-panel teal lighten-5">
+                    <br>
+                    <br>
+                    <img *ngIf="P1iron" class=picCenter src="assets/Emblem_Iron.png">
+                    <img *ngIf="P1bronze" class=picCenter src="assets/Emblem_Brozne.png">
+                    <img *ngIf="P1silver" class=picCenter src="assets/Emblem_Silver.png">
+                    <img *ngIf="P1gold" class=picCenter src="assets/Emblem_Gold.png">
+                    <img *ngIf="P1plat" class=picCenter src="assets/Emblem_Platinum.png">
+                    <img *ngIf="P1diamond" class=picCenter src="assets/Emblem_Diamond.png">
+                    <img *ngIf="P1master" class=picCenter src="assets/Emblem_Master.png">
+                    <img *ngIf="P1grandmaster" class=picCenter src="assets/Emblem_Grandmaster.png">
+                    <img *ngIf="P1challenger" class=picCenter src="assets/Emblem_Challenger.png">
+                    <br>
+                    <br>
+                    <h5 style="text-align:center">{{P1tier}} {{P1rank}}</h5>
+                    <hr>
+                    <br>
+                    <br>
+                    <br>
+                    <h4 style='font-weight: bold'>Basics:</h4>
+                    <hr>
+                    <div class="row2">
+                        <div class="column2">
+                            Win-Loss Ratio:
+
+                        </div>
+
+                        <div class="column2">
+                            {{P1ratio}}%
+
+                        </div>
+                    </div>
+                    <div class="row2">
+                        <div class="column2">
+
+                            K/D/A:
+                        </div>
+
+                        <div class="column2">
+                            {{P1kills}}/{{P1deaths}}/{{P1assists}}
+
+                        </div>
+                    </div>
+                    <div class="row2">
+                        <div class="column2">
+                            Average Damage:
+                        </div>
+
+                        <div class="column2">
+                            {{P1totaldamage}}
+
+                        </div>
+                    </div>
+
+                    <hr>
+                    <br>
+                    <br>
+                    <h4 style='font-weight: bold'>Champion Mastery:</h4>
+                    <hr>
+                    <div class="row2">
+                        <div class="column2">
+                            Best Champion:
+                        </div>
+
+                        <div class="column2">
+                            {{P1bestchamp}}
+
+                        </div>
+                    </div>
+                    <div class="row2">
+                        <div class="column2">
+                            Best Champion Mastery:
+                        </div>
+
+                        <div class="column2">
+                            {{P1bestchampmastery}}
+
+                        </div>
+                    </div>
+                    <div class="row2">
+                        <div class="column2">
+                            Total Champion Mastery:
+                        </div>
+
+                        <div class="column2">
+                            {{P1totalmastery}}
+
+                        </div>
+                    </div>
+
+
+                    <hr>
+                    <br>
+                    <br>
+                    <h4 style='font-weight: bold'>Income:</h4>
+                    <hr>
+                    <div class="row2">
+                        <div class="column2">
+                            Average Creep Score:
+                        </div>
+
+                        <div class="column2">
+                            {{P1cs}}
+
+                        </div>
+                    </div>
+                    <div class="row2">
+                        <div class="column2">
+                            CS Per Min 0-10:
+                        </div>
+
+                        <div class="column2">
+                            {{P1creepP1ermin10}}
+
+                        </div>
+                    </div>
+                    <div class="row2">
+                        <div class="column2">
+                            CS Per Min 10-20:
+                        </div>
+
+                        <div class="column2">
+                            {{P1creepP1ermin20}}
+
+                        </div>
+                    </div>
+                    <div class="row2">
+                        <div class="column2">
+                            Gold Per Min 0-10
+                        </div>
+
+                        <div class="column2">
+                            {{P1goldpermin10}}
+
+                        </div>
+                    </div>
+                    <div class="row2">
+                        <div class="column2">
+                            Gold Per Min 10-20:
+                        </div>
+
+                        <div class="column2">
+                            {{P1goldpermin20}}
+
+                        </div>
+                    </div>
+                    <div class="row2">
+                        <div class="column2">
+                            XP Per Min 0-10:
+                        </div>
+
+                        <div class="column2">
+                            {{P1xppermin10}}
+
+                        </div>
+                    </div>
+                    <div class="row2">
+                        <div class="column2">
+                            XP Per Min 10-20:
+                        </div>
+
+                        <div class="column2">
+                            {{P1xppermin20}}
+
+                        </div>
+                    </div>
+                    <hr>
+                    <br>
+                    <br>
+                    <h4 style='font-weight: bold'>Vision:</h4>
+                    <hr>
+                    <div class="row2">
+                        <div class="column2">
+                            Average Vision Score:
+                        </div>
+
+                        <div class="column2">
+                            {{P1vs}}
+
+                        </div>
+                    </div>
+                    <div class="row2">
+                        <div class="column2">
+                            Average Vision Wards Bought:
+                        </div>
+
+                        <div class="column2">
+                            {{P1visionwards}}
+
+                        </div>
+                    </div>
+
+                    <hr>
+                    <br>
+                    <br>
+                    <h4 style='font-weight: bold'>Objective Pressure:</h4>
+                    <hr>
+                    <div class="row2">
+                        <div class="column2">
+                            Average Objective Damage:
+                        </div>
+
+                        <div class="column2">
+                            {{P1objdamage}}
+
+                        </div>
+                    </div>
+                    <div class="row2">
+                        <div class="column2">
+                            Average Turret Damage:
+                        </div>
+
+                        <div class="column2">
+                            {{P1turretdamage}}
+
+                        </div>
+                    </div>
+                    <div class="row2">
+                        <div class="column2">
+                            Average Turret Kills:
+                        </div>
+
+                        <div class="column2">
+                            {{P1turretkills}}
+
+                        </div>
+                    </div>
+                    <div class="row2">
+                        <div class="column2">
+                            Average Inhibitor Kills:
+                        </div>
+
+                        <div class="column2">
+                            {{P1inhibkills}}
+
+                        </div>
+                    </div>
+
+                    <div class="row2">
+                        <div class="column2">
+                            Average Dragon Kills:
+                        </div>
+
+                        <div class="column2">
+                            {{P1dragonkills}}
+
+                        </div>
+                    </div>
+
+                    <div class="row2">
+                        <div class="column2">
+                            Average Dragon Kills:
+                        </div>
+
+                        <div class="column2">
+                            {{P1dragonkills}}
+
+                        </div>
+                    </div>
+                    <div class="row2">
+                        <div class="column2">
+                            Average Baron Kills:
+                        </div>
+
+                        <div class="column2">
+                            {{P1baronkills}}
+
+                        </div>
+                    </div>
+                    <div class="row2">
+                        <div class="column2">
+                            Average Rift Kills:
+                        </div>
+
+                        <div class="column2">
+                            {{P1riftkills}}
+
+                        </div>
+                    </div>
+
+
+                    <hr>
+                    <br>
+                    <br>
+                    <h4 style='font-weight: bold'>Difference:</h4>
+                    <hr>
+
+                    <div class="row2">
+                        <div class="column2">
+                            CS Difference 0-10:
+                        </div>
+
+                        <div class="column2">
+                            {{P1csdiff10}}
+
+                        </div>
+                    </div>
+                    <div class="row2">
+                        <div class="column2">
+                            CS Difference 10-20:
+                        </div>
+
+                        <div class="column2">
+                            {{P1csdiff20}}
+
+                        </div>
+                    </div>
+                    <div class="row2">
+                        <div class="column2">
+                            XP Difference 0-10:
+                        </div>
+
+                        <div class="column2">
+                            {{P1xpdiffpermin10}}
+
+                        </div>
+                    </div>
+                    <div class="row2">
+                        <div class="column2">
+                            XP Difference 10-20:
+                        </div>
+
+                        <div class="column2">
+                            {{P1xpdiffpermin20}}
+
+                        </div>
+                    </div>
+
+                    <hr>
+                    <br>
+                    <br>
+                    <h4 style='font-weight: bold'>Style Points:</h4>
+                    <hr>
+                    <div class="row2">
+                        <div class="column2">
+                            Average Killing Spree:
+                        </div>
+
+                        <div class="column2">
+                            {{P1killingspree}}
+
+                        </div>
+                    </div>
+                    <div class="row2">
+                        <div class="column2">
+                            Average Multikill:
+                        </div>
+
+                        <div class="column2">
+                            {{P1multikill}}
+
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                </div>
+                <div class="col s6 card-panel teal lighten-5">
+                    <br>
+                    <br>
+                    <img *ngIf="P2iron" class=picCenter src="assets/Emblem_Iron.png">
+                    <img *ngIf="P2bronze" class=picCenter src="assets/Emblem_Brozne.png">
+                    <img *ngIf="P2silver" class=picCenter src="assets/Emblem_Silver.png">
+                    <img *ngIf="P2gold" class=picCenter src="assets/Emblem_Gold.png">
+                    <img *ngIf="P2plat" class=picCenter src="assets/Emblem_Platinum.png">
+                    <img *ngIf="P2diamond" class=picCenter src="assets/Emblem_Diamond.png">
+                    <img *ngIf="P2master" class=picCenter src="assets/Emblem_Master.png">
+                    <img *ngIf="P2grandmaster" class=picCenter src="assets/Emblem_Grandmaster.png">
+                    <img *ngIf="P2challenger" class=picCenter src="assets/Emblem_Challenger.png">
+                    <br>
+                    <br>
+                    <h5 style="text-align:center">{{P2tier}} {{P2rank}}</h5>
+                    <hr>
+                    <br>
+                    <br>
+                    <br>
+                    <h4 style='font-weight: bold'>Basics:</h4>
+                    <hr>
+                    <div class="row2">
+                        <div class="column2">
+                            Win-Loss Ratio:
+
+                        </div>
+
+                        <div class="column2">
+                            {{P2ratio}}%
+
+                        </div>
+                    </div>
+                    <div class="row2">
+                        <div class="column2">
+
+                            K/D/A:
+                        </div>
+
+                        <div class="column2">
+                            {{P2kills}}/{{P2deaths}}/{{P2assists}}
+
+                        </div>
+                    </div>
+                    <div class="row2">
+                        <div class="column2">
+                            Average Damage:
+                        </div>
+
+                        <div class="column2">
+                            {{P2totaldamage}}
+
+                        </div>
+                    </div>
+
+                    <hr>
+                    <br>
+                    <br>
+                    <h4 style='font-weight: bold'>Champion Mastery:</h4>
+                    <hr>
+                    <div class="row2">
+                        <div class="column2">
+                            Best Champion:
+                        </div>
+
+                        <div class="column2">
+                            {{P2bestchamp}}
+
+                        </div>
+                    </div>
+                    <div class="row2">
+                        <div class="column2">
+                            Best Champion Mastery:
+                        </div>
+
+                        <div class="column2">
+                            {{P2bestchampmastery}}
+
+                        </div>
+                    </div>
+                    <div class="row2">
+                        <div class="column2">
+                            Total Champion Mastery:
+                        </div>
+
+                        <div class="column2">
+                            {{P2totalmastery}}
+
+                        </div>
+                    </div>
+
+
+                    <hr>
+                    <br>
+                    <br>
+                    <h4 style='font-weight: bold'>Income:</h4>
+                    <hr>
+                    <div class="row2">
+                        <div class="column2">
+                            Average Creep Score:
+                        </div>
+
+                        <div class="column2">
+                            {{P2cs}}
+
+                        </div>
+                    </div>
+                    <div class="row2">
+                        <div class="column2">
+                            CS Per Min 0-10:
+                        </div>
+
+                        <div class="column2">
+                            {{P2creepspermin10}}
+
+                        </div>
+                    </div>
+                    <div class="row2">
+                        <div class="column2">
+                            CS Per Min 10-20:
+                        </div>
+
+                        <div class="column2">
+                            {{P2creepspermin20}}
+
+                        </div>
+                    </div>
+                    <div class="row2">
+                        <div class="column2">
+                            Gold Per Min 0-10
+                        </div>
+
+                        <div class="column2">
+                            {{P2goldpermin10}}
+
+                        </div>
+                    </div>
+                    <div class="row2">
+                        <div class="column2">
+                            Gold Per Min 10-20:
+                        </div>
+
+                        <div class="column2">
+                            {{P2goldpermin20}}
+
+                        </div>
+                    </div>
+                    <div class="row2">
+                        <div class="column2">
+                            XP Per Min 0-10:
+                        </div>
+
+                        <div class="column2">
+                            {{P2xppermin10}}
+
+                        </div>
+                    </div>
+                    <div class="row2">
+                        <div class="column2">
+                            XP Per Min 10-20:
+                        </div>
+
+                        <div class="column2">
+                            {{P2xppermin20}}
+
+                        </div>
+                    </div>
+                    <hr>
+                    <br>
+                    <br>
+                    <h4 style='font-weight: bold'>Vision:</h4>
+                    <hr>
+                    <div class="row2">
+                        <div class="column2">
+                            Average Vision Score:
+                        </div>
+
+                        <div class="column2">
+                            {{P2vs}}
+
+                        </div>
+                    </div>
+                    <div class="row2">
+                        <div class="column2">
+                            Average Vision Wards Bought:
+                        </div>
+
+                        <div class="column2">
+                            {{P2visionwards}}
+
+                        </div>
+                    </div>
+
+                    <hr>
+                    <br>
+                    <br>
+                    <h4 style='font-weight: bold'>Objective Pressure:</h4>
+                    <hr>
+                    <div class="row2">
+                        <div class="column2">
+                            Average Objective Damage:
+                        </div>
+
+                        <div class="column2">
+                            {{P2objdamage}}
+
+                        </div>
+                    </div>
+                    <div class="row2">
+                        <div class="column2">
+                            Average Turret Damage:
+                        </div>
+
+                        <div class="column2">
+                            {{P2turretdamage}}
+
+                        </div>
+                    </div>
+                    <div class="row2">
+                        <div class="column2">
+                            Average Turret Kills:
+                        </div>
+
+                        <div class="column2">
+                            {{P2turretkills}}
+
+                        </div>
+                    </div>
+                    <div class="row2">
+                        <div class="column2">
+                            Average Inhibitor Kills:
+                        </div>
+
+                        <div class="column2">
+                            {{P2inhibkills}}
+
+                        </div>
+                    </div>
+
+                    <div class="row2">
+                        <div class="column2">
+                            Average Dragon Kills:
+                        </div>
+
+                        <div class="column2">
+                            {{P2dragonkills}}
+
+                        </div>
+                    </div>
+
+                    <div class="row2">
+                        <div class="column2">
+                            Average Dragon Kills:
+                        </div>
+
+                        <div class="column2">
+                            {{P2dragonkills}}
+
+                        </div>
+                    </div>
+                    <div class="row2">
+                        <div class="column2">
+                            Average Baron Kills:
+                        </div>
+
+                        <div class="column2">
+                            {{P2baronkills}}
+
+                        </div>
+                    </div>
+                    <div class="row2">
+                        <div class="column2">
+                            Average Rift Kills:
+                        </div>
+
+                        <div class="column2">
+                            {{P2riftkills}}
+
+                        </div>
+                    </div>
+
+
+                    <hr>
+                    <br>
+                    <br>
+                    <h4 style='font-weight: bold'>Difference:</h4>
+                    <hr>
+
+                    <div class="row2">
+                        <div class="column2">
+                            CS Difference 0-10:
+                        </div>
+
+                        <div class="column2">
+                            {{P2csdiff10}}
+
+                        </div>
+                    </div>
+                    <div class="row2">
+                        <div class="column2">
+                            CS Difference 10-20:
+                        </div>
+
+                        <div class="column2">
+                            {{P2csdiff20}}
+
+                        </div>
+                    </div>
+                    <div class="row2">
+                        <div class="column2">
+                            XP Difference 0-10:
+                        </div>
+
+                        <div class="column2">
+                            {{P2xpdiffpermin10}}
+
+                        </div>
+                    </div>
+                    <div class="row2">
+                        <div class="column2">
+                            XP Difference 10-20:
+                        </div>
+
+                        <div class="column2">
+                            {{P2xpdiffpermin20}}
+
+                        </div>
+                    </div>
+
+                    <hr>
+                    <br>
+                    <br>
+                    <h4 style='font-weight: bold'>Style Points:</h4>
+                    <hr>
+                    <div class="row2">
+                        <div class="column2">
+                            Average Killing Spree:
+                        </div>
+
+                        <div class="column2">
+                            {{P2killingspree}}
+
+                        </div>
+                    </div>
+                    <div class="row2">
+                        <div class="column2">
+                            Average Multikill:
+                        </div>
+
+                        <div class="column2">
+                            {{P2multikill}}
+
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+            </div>
+        </mat-tab>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <mat-tab label="Details">
+
+            <mat-tab-group mat-align-tabs="center">
+                <mat-tab label="Laning">
+                    <h5>CS Per Min 0-10: {{P2creepspermin10}}</h5>
+                </mat-tab>
+                <mat-tab label="Second">Content 2</mat-tab>
+                <mat-tab label="Third">Content 3</mat-tab>
+            </mat-tab-group>
+            <h1>WORK IN PROGRESS</h1>
+            <h1>WORK IN PROGRESS</h1>
+            <h1>WORK IN PROGRESS</h1>
+            <h1>WORK IN PROGRESS</h1>
+            <h1>WORK IN PROGRESS</h1>
+            <h1>WORK IN PROGRESS</h1>
+
+
+
+
+        </mat-tab>
+
+    </mat-tab-group>
 </div>
-
-<button (click)="details()" style="width: 100%; height:20%; position: absolute; left:0%" class="btn"
-    data-position="bottom" type="submit" name="action">Details Page
-    <i class="material-icons right">send</i>
-</button>
-

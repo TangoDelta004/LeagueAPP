@@ -16,10 +16,14 @@ import { FunctionsService } from "../functions.service";
 export class SearchresultComponent implements OnInit {
 
 
+
+
+  color = 'blue'
+
+
+
   P1summonername = ''
   P2summonername = ''
-
-
 
   P1tier = ""
   P1rank = ""

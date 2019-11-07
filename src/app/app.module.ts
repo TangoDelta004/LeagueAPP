@@ -8,6 +8,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { SummonersearchComponent } from './summonersearch/summonersearch.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SearchresultComponent } from './searchresult/searchresult.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatTabsModule} from '@angular/material/tabs';
 
 
 
@@ -22,7 +24,9 @@ import { SearchresultComponent } from './searchresult/searchresult.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatTabsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

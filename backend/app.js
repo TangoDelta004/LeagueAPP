@@ -7,7 +7,7 @@ finish1 = false
 finish2 = false
 
 
-key = 'RGAPI-ca956a3d-4527-4177-8ab9-122561da818b'
+key = 'RGAPI-8c7f36f0-74f0-4273-a530-cd47ab3c0e78'
 
 
 
@@ -853,7 +853,7 @@ app.use('/api/posts', (req, res, next) => {
         P1assists: P1assists,
         P1cs: P1cs,
         P1vs: P1vs,
-        P1totaldamage: P1totaldamage,
+        P1totaldamage: numberWithCommas(P1totaldamage),
         P1objdamage: P1objdamage,
         P1turretdamage: P1turretdamage,
         P1turretkills: P1turretkills,
@@ -884,7 +884,7 @@ app.use('/api/posts', (req, res, next) => {
         P2assists: P2assists,
         P2cs: P2cs,
         P2vs: P2vs,
-        P2totaldamage: P2totaldamage,
+        P2totaldamage:numberWithCommas(P2totaldamage),
         P2objdamage: P2objdamage,
         P2turretdamage: P2turretdamage,
         P2turretkills: P2turretkills,

@@ -35,10 +35,11 @@ export class SummonersearchComponent implements OnInit {
 
 
   private async search() {
+
     var P1summonername = (<HTMLInputElement>document.getElementById("textarea1")).value;
     var P2summonername = (<HTMLInputElement>document.getElementById("textarea2")).value;
-    // this.base = false
-    // this.loading = true
+    this.base = false
+    this.loading = true
     
     const post1 = { name1: P1summonername, name2: P2summonername }
 

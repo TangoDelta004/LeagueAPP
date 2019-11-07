@@ -11,6 +11,20 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 50%;
+    width: 30%;
    
+  }
+ 
+
+  .mat-tab-group {
+    margin-bottom: 48px;
+    
+  }
+
+  .row2 {
+    display: flex;
+  }
+  
+  .column2 {
+    flex: 50%;
   }
