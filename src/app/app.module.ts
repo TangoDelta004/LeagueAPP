@@ -10,7 +10,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { SearchresultComponent } from './searchresult/searchresult.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatTabsModule} from '@angular/material/tabs';
-
+import { FeaturedgamesComponent } from './featuredgames/featuredgames.component';
+import { MainpageComponent } from './mainpage/mainpage.component';
+import {MatCardModule} from '@angular/material/card';
 
 
 
@@ -19,6 +21,8 @@ import {MatTabsModule} from '@angular/material/tabs';
     AppComponent,
     SummonersearchComponent,
     SearchresultComponent,
+    FeaturedgamesComponent,
+    MainpageComponent,
   
   ],
   imports: [
@@ -26,7 +30,8 @@ import {MatTabsModule} from '@angular/material/tabs';
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatTabsModule
+    MatTabsModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
