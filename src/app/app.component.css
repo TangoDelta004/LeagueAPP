@@ -1,0 +1,20 @@
+@font-face {
+    font-family: 'Friz';
+    /*a name to be used later*/
+    src: url('../assets/friz.ttf');
+    /*URL to font*/
+}
+
+.title {
+    padding-top: 1vh;
+    text-align: center;
+    font-size: 5vh;
+    font-family: 'friz';
+    color: #D2C168
+}
+
+.navbar {
+    background-color: #26272C;
+    width: 100vw;
+    height: 10vh
+}

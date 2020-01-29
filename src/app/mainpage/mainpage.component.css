@@ -1,0 +1,8 @@
+.card {
+    margin-top: 10vh;
+    margin-left: 5vw;
+    height: 60vh;
+    width: 25vw;
+    background-color: rgb(228, 228, 228);
+    box-shadow: 0 0 1vh .1vh #888888;
+}

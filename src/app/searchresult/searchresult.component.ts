@@ -126,7 +126,7 @@ export class SearchresultComponent implements OnInit {
   P1dragonkills = 0
   P1riftkills = 0
 
-  key = 'RGAPI-1b82014d-0e71-4b0a-8025-11a315cd35b8'
+  key = 'RGAPI-037871ec-8b8d-47c6-ac10-128937936d31'
 
   counter = 0
   counter2 = 0
