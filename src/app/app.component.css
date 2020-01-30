@@ -1,20 +1,92 @@
-@font-face {
-    font-family: 'Friz';
-    /*a name to be used later*/
-    src: url('../assets/friz.ttf');
-    /*URL to font*/
+.titlebox {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    text-align: center;
+    width: 25vw;
+    height: 8vh;
+    border-width: .2vw;
+    border-color: #D2C168;
+    border-left-style: solid;
+    border-right-style: solid;
 }
 
 .title {
-    padding-top: 1vh;
-    text-align: center;
-    font-size: 5vh;
     font-family: 'friz';
-    color: #D2C168
+    font-size: 3vmin;
+    color: #D2C168;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .navbar {
     background-color: #26272C;
     width: 100vw;
-    height: 10vh
+    height: 8vh
+}
+
+.LoLtab {
+    background-color: #26272C;
+    position: absolute;
+    left: 0%;
+    text-align: center;
+    font-size: 1.5vh;
+    font-family: 'friz';
+    color: #D2C168;
+    width: 6%;
+    height: 8vh;
+    border-width: .2vw;
+    border-color: #D2C168;
+    border-left-style: solid;
+    border-right-style: solid;
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 15vw;
+    }
+    .sidenav a {
+        font-size: 18px;
+    }
+}
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgb(228, 228, 228);
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav a {
+    font-family: 'friz';
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #26272C;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: rgb(102, 102, 102);
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+#main {
+    transition: margin-left .5s;
 }

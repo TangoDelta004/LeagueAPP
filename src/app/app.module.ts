@@ -13,6 +13,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { FeaturedgamesComponent } from './featuredgames/featuredgames.component';
 import { MainpageComponent } from './mainpage/mainpage.component';
 import {MatCardModule} from '@angular/material/card';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -31,7 +32,8 @@ import {MatCardModule} from '@angular/material/card';
     HttpClientModule,
     BrowserAnimationsModule,
     MatTabsModule,
-    MatCardModule
+    MatCardModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,13 +1,121 @@
 .loader {
-    border: 16px solid #f3f3f3; /* Light grey */
-    border-top: 16px solid #3498db; /* Blue */
+    border: 16px solid #f3f3f3;
+    /* Light grey */
+    border-top: 16px solid #3498db;
+    /* Blue */
     border-radius: 50%;
     width: 120px;
     height: 120px;
     animation: spin .01s linear infinite;
-  }
-  
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.contain {
+    background-color: rgb(228, 228, 228);
+    height: 80vh;
+    width: 95vw;
+    margin-left: 2.5vw;
+    margin-right: 2.5vw;
+    box-shadow: 0 0 1vh .1vh #888888;
+}
+
+.LoLtitlebox {
+    background-color: #26272C;
+    text-align: center;
+    width: 100%;
+    height: 10vh;
+    margin-top: 7vh;
+    font-size: 3vmin;
+    color: #D2C168;
+    font-family: "friz";
+}
+
+.LoLtitle {
+    position: relative;
+    left: 50%;
+    top: 5vh;
+    transform: translate(-50%, -50%);
+}
+
+.card1 {
+    font-family: "friz";
+    font-size: 4vh;
+    text-align: center;
+    order: 1;
+    flex-basis: 49.5%;
+    background-color: rgb(228, 228, 228);
+    margin-right: .5%;
+}
+
+.card2 {
+    font-family: "friz";
+    font-size: 4vh;
+    text-align: center;
+    order: 2;
+    flex-basis: 49.5%;
+    background-color: rgb(228, 228, 228);
+    margin-left: .5%;
+}
+
+.filler {
+    height: 20%
+}
+
+.flexbox {
+    display: flex;
+    flex-direction: row;
+    height: 57.5%;
+    align-content: space-between;
+}
+
+.textbox {
+    text-align: center;
+    height: 10vh;
+    font-size: 2vh;
+    background-color: white;
+    width: 100%;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 1vh;
+    box-sizing: border-box;
+}
+
+.cardbutton {
+    width: 100%;
+    height: 10%;
+    box-shadow: 0 0 .1vh .1vh #888888;
+    background: rgb(252, 250, 242);
+}
+
+.cardbutton span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.3s;
+}
+
+.cardbutton span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -3vw;
+    transition: 0.3s;
+}
+
+.cardbutton:hover span {
+    padding-right: 25px;
+}
+
+.cardbutton:hover span:after {
+    opacity: 1;
+    right: 0;
+}

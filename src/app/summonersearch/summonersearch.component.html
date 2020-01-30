@@ -1,39 +1,42 @@
-<br>
-<br>
-<br>
 <div *ngIf="base">
- 
 
-    <div class="row">
-        <form class="col s12">
-            <div class="row">
-                <div class="input-field col s12">
-                    <textarea id="textarea1" class="materialize-textarea"></textarea>
-                    <label for="textarea1">Type your summoner name below
-                    </label>
-                </div>
+
+    <div class='contain'>
+        <div class='LoLtitlebox'>
+            <div class='LoLtitle'>
+                LoLImBetterThanYou
             </div>
-        </form>
-    </div>
-    <div class="row">
-            <form class="col s12">
-                <div class="row">
-                    <div class="input-field col s12">
-                        <textarea id="textarea2" class="materialize-textarea"></textarea>
-                        <label for="textarea1">Type another's summoner name below
-                        </label>
-                    </div>
-                </div>
-            </form>
         </div>
-    <button (click)="search()" class="btn" data-position="bottom" type="submit" name="action">Submit
-        <i class="material-icons right">send</i>
-    </button>
+        <div class='filler'>
+
+
+        </div>
+
+        <div class='flexbox'>
+            <div class="card1">
+                <p>Summoner 1</p>
+                <form>
+                    <input id='textarea1' class='textbox' [ngModel]='P1summonername' name='summ1'>
+                </form>
+            </div>
+            <div class="card2">
+                <p>Summoner 2</p>
+                <form>
+                    <input id='textarea2' class='textbox' [ngModel]='P2summonername' name='summ2'>
+                </form>
+            </div>
+        </div>
+        <button class="cardbutton" (click)='search()'>
+            <span>Find Out Who Is Better! </span>
+        </button>
+    </div>
+
+
 </div>
 
 <div *ngIf="loading">
-    <div class="loader" style = "position: absolute; top: 20%; left:45%">
+    <div class="loader" style="position: absolute; top: 20%; left:45%">
         <p>LOADING</p>
     </div>
-    <p style = "position: absolute; top: 30%; left:30%">LOADING.....</p>
+    <p style="position: absolute; top: 30%; left:30%">LOADING.....</p>
 </div>

@@ -19,6 +19,10 @@ export class SummonersearchComponent implements OnInit {
   loading = false
   dataobj;
 
+  P1summonername
+  P2summonername
+
+
   constructor(private http: HttpClient, private router: Router, private functions: FunctionsService) { }
 
 
@@ -30,8 +34,10 @@ export class SummonersearchComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.functions.currentMessage.subscribe(dataobj => this.dataobj = dataobj)
+
   }
+
+
 
 
   private async search() {
@@ -40,27 +46,21 @@ export class SummonersearchComponent implements OnInit {
     var P2summonername = (<HTMLInputElement>document.getElementById("textarea2")).value;
     this.base = false
     this.loading = true
-    
-    const post1 = { name1: P1summonername, name2: P2summonername }
 
-    const request = this.http.post('http://localhost:3000/api/posts', post1).subscribe((responseData) => {
-      console.log("HELLOOOOOO")
-      const request2 = this.http.get('http://localhost:3000/api/posts').subscribe((responseData) => {
-       //console.log(responseData)
-       
-       //this.newMessage(responseData)
-       this.functions.storeValue(responseData)
-      
-
-       this.router.navigate(['/searchresult'])
+    const post1 = { name: P1summonername }
+    const post2 = { name: P2summonername }
+    const request = this.http.post('http://localhost:3000/api/getinfo', post1).subscribe((responseData) => {
+      console.log(responseData)
+      this.functions.storeP1Value(responseData)
+      const request2 = this.http.post('http://localhost:3000/api/getinfo', post2).subscribe((responseData) => {
+        console.log(responseData)
+        this.functions.storeP2Value(responseData)
+        this.router.navigate(['/searchresult'])
       })
     })
- 
 
 
-  }
-  newMessage(responseData) {
-    this.functions.changeMessage(responseData)
+
   }
 
 }

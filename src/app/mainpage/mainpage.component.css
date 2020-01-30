@@ -6,3 +6,57 @@
     background-color: rgb(228, 228, 228);
     box-shadow: 0 0 1vh .1vh #888888;
 }
+
+.cardtitlebox {
+    background-color: #26272C;
+    height: 12%;
+}
+
+.cardtitle {
+    color: #D2C168;
+    font-size: 2vmin;
+    font-family: "friz";
+    position: absolute;
+    left: 50%;
+    top: 4vh;
+    transform: translate(-50%, -50%);
+}
+
+.description {
+    font-size: 1.5vmin;
+    padding-left: 1vw;
+    padding-right: 1vw;
+    height: 73%;
+}
+
+.cardbutton {
+    width: 25.15vw;
+    height: 10%;
+    background: rgb(252, 250, 242);
+    box-shadow: 0 0 .1vh .1vh #888888;
+}
+
+.cardbutton span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.3s;
+}
+
+.cardbutton span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -3vw;
+    transition: 0.3s;
+}
+
+.cardbutton:hover span {
+    padding-right: 25px;
+}
+
+.cardbutton:hover span:after {
+    opacity: 1;
+    right: 0;
+}

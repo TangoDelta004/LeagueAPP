@@ -20,17 +20,24 @@ export class FunctionsService {
 
   constructor(private http: HttpClient) { }
   
-  changeMessage(message) {
-    this.messageSource.next(message)
-  }
 
-  storeValue(responseData){
+  storeP1Value(responseData){
     var dataobj = responseData
-    localStorage.setItem("dataobj", JSON.stringify(dataobj))
+    localStorage.setItem("P1", JSON.stringify(dataobj))
   }
  
-  getValue(){
-    return JSON.parse(localStorage.getItem("dataobj")) 
+  getP1Value(){ 
+    return JSON.parse(localStorage.getItem("P1")) 
+  }
+
+
+  storeP2Value(responseData){
+    var dataobj = responseData
+    localStorage.setItem("P2", JSON.stringify(dataobj))
+  }
+ 
+  getP2Value(){
+    return JSON.parse(localStorage.getItem("P2")) 
   }
    
 }

@@ -126,7 +126,7 @@ export class SearchresultComponent implements OnInit {
   P1dragonkills = 0
   P1riftkills = 0
 
-  key = 'RGAPI-037871ec-8b8d-47c6-ac10-128937936d31'
+
 
   counter = 0
   counter2 = 0
@@ -149,16 +149,16 @@ export class SearchresultComponent implements OnInit {
 
 
     //this.functions.currentMessage.subscribe(dataobj => this.dataobj = dataobj)
-    var dataobj = this.functions.getValue()
+    var P1 = this.functions.getP1Value().object
+    var P2 = this.functions.getP2Value().object
+    console.log(P1)
+    console.log(P2)
 
-    console.log(dataobj)
+    this.P1summonername = P1.summonername
+    this.P2summonername = P2.summonername
 
-    this.P1summonername = dataobj.P1summonername
-    this.P2summonername = dataobj.P2summonername
-    console.log(this.P1summonername)
-    console.log(this.P2summonername)
 
-    switch (dataobj.P1tier) {
+    switch (P1.tier) {
       case "UNRANKED":
         this.P1unranked = true
         break;
@@ -193,7 +193,7 @@ export class SearchresultComponent implements OnInit {
       default:
         this.P1unranked = true
     }
-    switch (dataobj.P2tier) {
+    switch (P2.tier) {
       case "UNRANKED":
         this.P2unranked = true
         break;
@@ -230,78 +230,78 @@ export class SearchresultComponent implements OnInit {
     }
 
  
-    this.P1rank =dataobj.P1rank
-    this.P1tier= dataobj.P1tier
+    this.P1rank =P1.rank
+    this.P1tier= P1.tier
 
-    this.P1ratio = dataobj.P1ratio
-    this.P1kills = dataobj.P1kills
-    this.P1deaths = dataobj.P1deaths
-    this.P1assists = dataobj.P1assists
-    this.P1totaldamage = dataobj.P1totaldamage
-    this.P1bestchamp = dataobj.P1bestchamp
-    this.P1bestchampmastery = dataobj.P1bestchampmastery
-    this.P1totalmastery = dataobj.P1totalchampmastery
-    this.P1cs = dataobj.P1cs
-    this.P1creepP1ermin10 = dataobj.P1creepspermin10
-    this.P1creepP1ermin20 = dataobj.P1creepspermin20
-    this.P1goldpermin10 = dataobj.P1goldpermin10
-    this.P1goldpermin20 = dataobj.P1goldpermin20
-    this.P1xppermin10 = dataobj.P1xppermin10
-    this.P1xppermin20 = dataobj.P1xppermin20
-    this.P1vs = dataobj.P1vs
-    this.P1visionwards = dataobj.P1visionwards
-    this.P1objdamage = dataobj.P1objdamage
-    this.P1turretdamage = dataobj.P1turretdamage
-    this.P1turretkills = dataobj.P1turretkills
-    this.P1inhibkills = dataobj.P1inhibkills
-    this.P1dragonkills = dataobj.P1dragonkills
-    this.P1baronkills = dataobj.P1baronkills
-    this.P1riftkills = dataobj.P1riftkills
-    this.P1csdiff10 = dataobj.P1csdiff10
-    this.P1csdiff20 = dataobj.P1csdiff20
-    this.P1xpdiffpermin10 = dataobj.P1xpdiffpermin10
-    this.P1xpdiffpermin20 = dataobj.P1xpdiffpermin20
-    this.P1killingspree = dataobj.P1killingspree
-    this.P1multikill = dataobj.P1multikill
-
-
+    this.P1ratio = P1.ratio
+    this.P1kills = P1.kills
+    this.P1deaths = P1.deaths
+    this.P1assists = P1.assists
+    this.P1totaldamage = P1.totaldamage
+    this.P1bestchamp = P1.bestchamp
+    this.P1bestchampmastery = P1.bestchampmastery
+    this.P1totalmastery = P1.totalchampmastery
+    this.P1cs = P1.P1cs
+    this.P1creepP1ermin10 = P1.creepspermin10
+    this.P1creepP1ermin20 = P1.creepspermin20
+    this.P1goldpermin10 = P1.goldpermin10
+    this.P1goldpermin20 = P1.goldpermin20
+    this.P1xppermin10 = P1.xppermin10
+    this.P1xppermin20 = P1.xppermin20
+    this.P1vs = P1.P1vs
+    this.P1visionwards = P1.visionwards
+    this.P1objdamage = P1.objdamage
+    this.P1turretdamage = P1.turretdamage
+    this.P1turretkills = P1.turretkills
+    this.P1inhibkills = P1.inhibkills
+    this.P1dragonkills = P1.dragonkills
+    this.P1baronkills = P1.baronkills
+    this.P1riftkills = P1.riftkills
+    this.P1csdiff10 = P1.csdiff10
+    this.P1csdiff20 = P1.csdiff20
+    this.P1xpdiffpermin10 = P1.xpdiffpermin10
+    this.P1xpdiffpermin20 = P1.xpdiffpermin20
+    this.P1killingspree = P1.killingspree
+    this.P1multikill = P1.multikill
 
 
 
 
-    this.P2rank =dataobj.P2rank
-    this.P2tier= dataobj.P2tier
 
-    this.P2ratio = dataobj.P2ratio
-    this.P2kills = dataobj.P2kills
-    this.P2deaths = dataobj.P2deaths
-    this.P2assists = dataobj.P2assists
-    this.P2totaldamage = dataobj.P2totaldamage
-    this.P2bestchamp = dataobj.P2bestchamp
-    this.P2bestchampmastery = dataobj.P2bestchampmastery
-    this.P2totalmastery = dataobj.P2totalchampmastery
-    this.P2cs = dataobj.P2cs
-    this.P2creepspermin10 = dataobj.P2creepspermin10
-    this.P2creepspermin20 = dataobj.P2creepspermin20
-    this.P2goldpermin10 = dataobj.P2goldpermin10
-    this.P2goldpermin20 = dataobj.P2goldpermin20
-    this.P2xppermin10 = dataobj.P2xppermin10
-    this.P2xppermin20 = dataobj.P2xppermin20
-    this.P2vs = dataobj.P2vs
-    this.P2visionwards = dataobj.P2visionwards
-    this.P2objdamage = dataobj.P2objdamage
-    this.P2turretdamage = dataobj.P2turretdamage
-    this.P2turretkills = dataobj.P2turretkills
-    this.P2inhibkills = dataobj.P2inhibkills
-    this.P2dragonkills = dataobj.P2dragonkills
-    this.P2baronkills = dataobj.P2baronkills
-    this.P2riftkills = dataobj.P2riftkills
-    this.P2csdiff10 = dataobj.P2csdiff10
-    this.P2csdiff20 = dataobj.P2csdiff20
-    this.P2xpdiffpermin10 = dataobj.P2xpdiffpermin10
-    this.P2xpdiffpermin20 = dataobj.P2xpdiffpermin20
-    this.P2killingspree = dataobj.P2killingspree
-    this.P2multikill = dataobj.P2multikill
+
+    this.P2rank =P2.rank
+    this.P2tier= P2.tier
+
+    this.P2ratio = P2.ratio
+    this.P2kills = P2.kills
+    this.P2deaths = P2.deaths
+    this.P2assists = P2.assists
+    this.P2totaldamage = P2.totaldamage
+    this.P2bestchamp = P2.bestchamp
+    this.P2bestchampmastery = P2.bestchampmastery
+    this.P2totalmastery = P2.totalchampmastery
+    this.P2cs = P2.cs
+    this.P2creepspermin10 = P2.creepspermin10
+    this.P2creepspermin20 = P2.creepspermin20
+    this.P2goldpermin10 = P2.goldpermin10
+    this.P2goldpermin20 = P2.goldpermin20
+    this.P2xppermin10 = P2.xppermin10
+    this.P2xppermin20 = P2.xppermin20
+    this.P2vs = P2.vs
+    this.P2visionwards = P2.visionwards
+    this.P2objdamage = P2.objdamage
+    this.P2turretdamage = P2.turretdamage
+    this.P2turretkills = P2.turretkills
+    this.P2inhibkills = P2.inhibkills
+    this.P2dragonkills = P2.dragonkills
+    this.P2baronkills = P2.baronkills
+    this.P2riftkills = P2.riftkills
+    this.P2csdiff10 = P2.csdiff10
+    this.P2csdiff20 = P2.csdiff20
+    this.P2xpdiffpermin10 = P2.xpdiffpermin10
+    this.P2xpdiffpermin20 = P2.xpdiffpermin20
+    this.P2killingspree = P2.killingspree
+    this.P2multikill = P2.multikill
 
 
 
