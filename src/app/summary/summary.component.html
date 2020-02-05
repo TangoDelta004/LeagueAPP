@@ -1,0 +1,272 @@
+<div class='contain'>
+    <div class='titlebox'>
+        <div class='title'>
+            Summary
+        </div>
+    </div>
+
+    <div class='flexbox'>
+        <div class="card1">
+            <p>{{P1summonername}}</p>
+            <hr>
+            <img *ngIf="P1iron" class=picCenter src="assets/Emblem_Iron.png">
+            <img *ngIf="P1bronze" class=picCenter src="assets/Emblem_Brozne.png">
+            <img *ngIf="P1silver" class=picCenter src="assets/Emblem_Silver.png">
+            <img *ngIf="P1gold" class=picCenter src="assets/Emblem_Gold.png">
+            <img *ngIf="P1plat" class=picCenter src="assets/Emblem_Platinum.png">
+            <img *ngIf="P1diamond" class=picCenter src="assets/Emblem_Diamond.png">
+            <img *ngIf="P1master" class=picCenter src="assets/Emblem_Master.png">
+            <img *ngIf="P1grandmaster" class=picCenter src="assets/Emblem_Grandmaster.png">
+            <img *ngIf="P1challenger" class=picCenter src="assets/Emblem_Challenger.png">
+            <p style="text-align: center;font-size: 3vmin;">{{P1tier}} {{P1rank}}</p>
+            <hr>
+        </div>
+
+        <div class="card2">
+            <p>{{P2summonername}}</p>
+            <hr>
+            <img *ngIf="P2iron" class=picCenter src="assets/Emblem_Iron.png">
+            <img *ngIf="P2bronze" class=picCenter src="assets/Emblem_Brozne.png">
+            <img *ngIf="P2silver" class=picCenter src="assets/Emblem_Silver.png">
+            <img *ngIf="P2gold" class=picCenter src="assets/Emblem_Gold.png">
+            <img *ngIf="P2plat" class=picCenter src="assets/Emblem_Platinum.png">
+            <img *ngIf="P2diamond" class=picCenter src="assets/Emblem_Diamond.png">
+            <img *ngIf="P2master" class=picCenter src="assets/Emblem_Master.png">
+            <img *ngIf="P2grandmaster" class=picCenter src="assets/Emblem_Grandmaster.png">
+            <img *ngIf="P2challenger" class=picCenter src="assets/Emblem_Challenger.png">
+            <p style="text-align: center;font-size: 3vmin;">{{P2tier}} {{P2rank}}</p>
+            <hr>
+        </div>
+        <br>
+        <br>
+    </div>
+    <div class='flex2'>
+        <div class="col1">
+            <p id="minititle">Basics:</p>
+            <hr>
+            <p>Win-Loss Ratio:</p>
+            <p>K/D/A:</p>
+            <p>Average Damage:</p>
+            <hr>
+            <p id="minititle">Champion Mastery:</p>
+            <hr>
+            <p>Best Champion:</p>
+            <p>Best Champion Mastery:</p>
+            <p>Total champion Mastery:</p>
+            <hr>
+            <p id="minititle">Income</p>
+            <hr>
+            <p>Average Creep Score:</p>
+            <p>CS Per Min 0-10:</p>
+            <p>CS Per Min 10-20:</p>
+            <p>Gold Per Min 0-10:</p>
+            <p>Gold Per Min 10-20:</p>
+            <p>XP Per Min 0-10:</p>
+            <p>XP Per Min 10-20:</p>
+            <hr>
+            <p id="minititle">Vision:</p>
+            <hr>
+            <p>Average Vision Score:</p>
+            <p>Average Vision Wards Bought:</p>
+            <hr>
+            <p id="minititle">Objective Pressure:</p>
+            <hr>
+            <p>Average Objective Damage:</p>
+            <p>Average Turret Damage:</p>
+            <p>Average Turret Kills:</p>
+            <p>Average Inhibitor Kills:</p>
+            <p>Average Dragon Kills:</p>
+            <p>Average Baron Kills:</p>
+            <p>Average Rift Kills:</p>
+            <hr>
+            <p id="minititle">Difference:</p>
+            <hr>
+            <p>CS Difference 0-10:</p>
+            <p>CS Difference 10-20:</p>
+            <p>XP Difference 0-10:</p>
+            <p>XP Difference 10-20:</p>
+            <hr>
+            <p id="minititle">Style Points:</p>
+            <hr>
+            <p>Average Killing Spree:</p>
+            <p>Average Multikill:</p>
+            <hr>
+        </div>
+
+
+        <div class="col2">
+            <p id="minititle">-</p>
+            <hr>
+            <p>{{P1ratio}}%</p>
+            <p>{{P1kills}}/{{P1deaths}}/{{P1assists}}</p>
+            <p>{{P1totaldamage}}</p>
+            <hr>
+            <p id="minititle">-</p>
+            <hr>
+            <p>{{P1bestchamp}}</p>
+            <p>{{P1bestchampmastery}}</p>
+            <p>{{P1totalmastery}}</p>
+            <hr>
+            <p id="minititle">-</p>
+            <hr>
+            <p>{{P1cs}}</p>
+            <p>{{P1creepPermin10}}</p>
+            <p>{{P1creepPermin20}}</p>
+            <p>{{P1goldpermin10}}</p>
+            <p>{{P1goldpermin20}}</p>
+            <p>{{P1xppermin10}}</p>
+            <p>{{P1xppermin20}}</p>
+            <hr>
+            <p id="minititle">-</p>
+            <hr>
+            <p>{{P1vs}}</p>
+            <p>{{P1visionwards}}</p>
+            <hr>
+            <p id="minititle">-</p>
+            <hr>
+            <p>{{P1objdamage}}</p>
+            <p>{{P1turretdamage}}</p>
+            <p>{{P1turretkills}}</p>
+            <p>{{P1inhibkills}}</p>
+            <p>{{P1dragonkills}}</p>
+            <p>{{P1baronkills}}</p>
+            <p>{{P1riftkills}}</p>
+            <hr>
+            <p id="minititle">-</p>
+            <hr>
+            <p>{{P1csdiff10}}</p>
+            <p>{{P1csdiff20}}</p>
+            <p>{{P1xpdiffpermin10}}</p>
+            <p>{{P1xpdiffpermin20}}</p>
+            <hr>
+            <p id="minititle">-</p>
+            <hr>
+            <p>{{P1killingspree}}</p>
+            <p>{{P1multikill}}</p>
+
+            <hr>
+
+
+
+        </div>
+
+
+        <div class="col3">
+            <p id="minititle">Basics:</p>
+            <hr>
+            <p>Win-Loss Ratio:</p>
+            <p>K/D/A:</p>
+            <p>Average Damage:</p>
+            <hr>
+            <p id="minititle">Champion Mastery:</p>
+            <hr>
+            <p>Best Champion:</p>
+            <p>Best Champion Mastery:</p>
+            <p>Total champion Mastery:</p>
+            <hr>
+            <p id="minititle">Income</p>
+            <hr>
+            <p>Average Creep Score:</p>
+            <p>CS Per Min 0-10:</p>
+            <p>CS Per Min 10-20:</p>
+            <p>Gold Per Min 0-10:</p>
+            <p>Gold Per Min 10-20:</p>
+            <p>XP Per Min 0-10:</p>
+            <p>XP Per Min 10-20:</p>
+            <hr>
+            <p id="minititle">Vision:</p>
+            <hr>
+            <p>Average Vision Score:</p>
+            <p>Average Vision Wards Bought:</p>
+            <hr>
+            <p id="minititle">Objective Pressure:</p>
+            <hr>
+            <p>Average Objective Damage:</p>
+            <p>Average Turret Damage:</p>
+            <p>Average Turret Kills:</p>
+            <p>Average Inhibitor Kills:</p>
+            <p>Average Dragon Kills:</p>
+            <p>Average Baron Kills:</p>
+            <p>Average Rift Kills:</p>
+            <hr>
+            <p id="minititle">Difference:</p>
+            <hr>
+            <p>CS Difference 0-10:</p>
+            <p>CS Difference 10-20:</p>
+            <p>XP Difference 0-10:</p>
+            <p>XP Difference 10-20:</p>
+            <hr>
+            <p id="minititle">Style Points:</p>
+            <hr>
+            <p>Average Killing Spree:</p>
+            <p>Average Multikill:</p>
+            <hr>
+        </div>
+
+
+        <div class="col4">
+            <p id="minititle">-</p>
+            <hr>
+            <p>{{P2ratio}}%</p>
+            <p>{{P2kills}}/{{P2deaths}}/{{P2assists}}</p>
+            <p>{{P2totaldamage}}</p>
+            <hr>
+            <p id="minititle">-</p>
+            <hr>
+            <p>{{P2bestchamp}}</p>
+            <p>{{P2bestchampmastery}}</p>
+            <p>{{P2totalmastery}}</p>
+            <hr>
+            <p id="minititle">-</p>
+            <hr>
+            <p>{{P2cs}}</p>
+            <p>{{P2creepspermin10}}</p>
+            <p>{{P2creepspermin20}}</p>
+            <p>{{P2goldpermin10}}</p>
+            <p>{{P2goldpermin20}}</p>
+            <p>{{P2xppermin10}}</p>
+            <p>{{P2xppermin20}}</p>
+            <hr>
+            <p id="minititle">-</p>
+            <hr>
+            <p>{{P2vs}}</p>
+            <p>{{P2visionwards}}</p>
+            <hr>
+            <p id="minititle">-</p>
+            <hr>
+            <p>{{P2objdamage}}</p>
+            <p>{{P2turretdamage}}</p>
+            <p>{{P2turretkills}}</p>
+            <p>{{P2inhibkills}}</p>
+            <p>{{P2dragonkills}}</p>
+            <p>{{P2baronkills}}</p>
+            <p>{{P2riftkills}}</p>
+            <hr>
+            <p id="minititle">-</p>
+            <hr>
+            <p>{{P2csdiff10}}</p>
+            <p>{{P2csdiff20}}</p>
+            <p>{{P2xpdiffpermin10}}</p>
+            <p>{{P2xpdiffpermin20}}</p>
+            <hr>
+            <p id="minititle">-</p>
+            <hr>
+            <p>{{P2killingspree}}</p>
+            <p>{{P2multikill}}</p>
+
+            <hr>
+
+
+
+        </div>
+
+
+
+
+
+
+    </div>
+
+
+
+</div>

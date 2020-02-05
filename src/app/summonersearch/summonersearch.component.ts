@@ -55,7 +55,7 @@ export class SummonersearchComponent implements OnInit {
       const request2 = this.http.post('http://localhost:3000/api/getinfo', post2).subscribe((responseData) => {
         console.log(responseData)
         this.functions.storeP2Value(responseData)
-        this.router.navigate(['/searchresult'])
+        this.router.navigate(['/summary'])
       })
     })
 

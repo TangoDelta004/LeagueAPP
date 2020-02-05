@@ -14,6 +14,7 @@ import { FeaturedgamesComponent } from './featuredgames/featuredgames.component'
 import { MainpageComponent } from './mainpage/mainpage.component';
 import {MatCardModule} from '@angular/material/card';
 import { FormsModule } from '@angular/forms';
+import { SummaryComponent } from './summary/summary.component';
 
 
 
@@ -24,6 +25,7 @@ import { FormsModule } from '@angular/forms';
     SearchresultComponent,
     FeaturedgamesComponent,
     MainpageComponent,
+    SummaryComponent,
   
   ],
   imports: [
