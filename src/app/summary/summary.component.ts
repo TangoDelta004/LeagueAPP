@@ -224,6 +224,15 @@ export class SummaryComponent implements OnInit {
       this.P1xpdiffpermin20 = P1.xpdiffpermin20
       this.P1killingspree = P1.killingspree
       this.P1multikill = P1.multikill
+
+
+      if (this.P1xpdiffpermin20 == null){
+        this.P1xpdiffpermin20 = 0
+      }
+      if (this.P1csdiff20== null){
+        this.P1csdiff20 = 0
+      }
+
     }
     else{
       this.P1notfound=true
@@ -302,6 +311,14 @@ export class SummaryComponent implements OnInit {
       this.P2xpdiffpermin20 = P2.xpdiffpermin20
       this.P2killingspree = P2.killingspree
       this.P2multikill = P2.multikill
+
+      if (this.P2xpdiffpermin20 == null){
+        this.P2xpdiffpermin20 = 0
+      }
+      if (this.P2csdiff20== null){
+        this.P2csdiff20 = 0
+      }
+
     }
     else{
       this.P2notfound=true

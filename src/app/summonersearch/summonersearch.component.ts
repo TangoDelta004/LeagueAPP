@@ -27,11 +27,7 @@ export class SummonersearchComponent implements OnInit {
 
 
 
-  post: {
-    name: string,
-    id: string
 
-  }
 
   ngOnInit() {
 

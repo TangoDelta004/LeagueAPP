@@ -7,7 +7,7 @@ finish = false
 
 
 
-key = 'RGAPI-3c37753d-c847-4802-9995-c99a15c0f0a9'
+key = 'RGAPI-3eac65af-39fc-408b-a294-968bb295cc80'
 
 
 
@@ -35,7 +35,7 @@ const getrequest = (url, callback) => {
         })
         }
         else{
-        callback("OH NO",undefined)
+        callback("error",undefined)
         }
     })
 }
