@@ -9,6 +9,7 @@
         <div class="card1">
             <p>{{P1summonername}}</p>
             <hr>
+            <img *ngIf="P1notfound" class=picCenter src="assets/error.png">
             <img *ngIf="P1iron" class=picCenter src="assets/Emblem_Iron.png">
             <img *ngIf="P1bronze" class=picCenter src="assets/Emblem_Brozne.png">
             <img *ngIf="P1silver" class=picCenter src="assets/Emblem_Silver.png">
@@ -25,6 +26,7 @@
         <div class="card2">
             <p>{{P2summonername}}</p>
             <hr>
+            <img *ngIf="P2notfound" class=picCenter src="assets/error.png">
             <img *ngIf="P2iron" class=picCenter src="assets/Emblem_Iron.png">
             <img *ngIf="P2bronze" class=picCenter src="assets/Emblem_Brozne.png">
             <img *ngIf="P2silver" class=picCenter src="assets/Emblem_Silver.png">

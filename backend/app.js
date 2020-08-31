@@ -7,7 +7,7 @@ finish = false
 
 
 
-key = 'RGAPI-102e4aeb-6248-4bf5-bd85-f1046abc69ea'
+key = 'RGAPI-3c37753d-c847-4802-9995-c99a15c0f0a9'
 
 
 
@@ -21,21 +21,24 @@ const getrequest = (url, callback) => {
 
     request(url, (error, response, body) => {
 
-        const data = JSON.parse(body)
+        var data = JSON.parse(body)
 
-
-
-        callback(undefined, {
+        if (data != undefined){
+            console.log(data)
+            if(data.status!=undefined){
+                if (data.status.status_code == 404 || data.status.status_code == 400){
+                    data = "error"
+                }
+            }
+            callback(undefined, {
             data: data
         })
+        }
+        else{
+        callback("OH NO",undefined)
+        }
     })
 }
-
-function dostuff2(res) {
-    console.log('doing stuff')
-    res.send({ dummy: 'dummy' })
-}
-
 
 
 
@@ -65,16 +68,18 @@ function dostuff(res, post) {
 
     //get player info
     getrequest(url, (error, data) => {
-
+        if (data.data != "error"){    
         summonerid = data.data.id
         accountid = data.data.accountId
 
         url = `https://na1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/${summonerid}?api_key=${key}`
 
 
+    
         //get player champ mastery
         getrequest(url, (error, data) => {
-
+            console.log(data)
+            if (data.data != "error"){ 
             totalchampmastery = 0
             for (i in data.data) {
 
@@ -96,7 +101,7 @@ function dostuff(res, post) {
             url = "http://ddragon.leagueoflegends.com/cdn/9.18.1/data/en_US/champion.json"
                 // request for ddragon to give me list of champions
             getrequest(url, (error, data) => {
-
+                if (data.data != "error"){ 
                 console.log(bestchampid)
 
                 for (var i in data.data.data) {
@@ -112,7 +117,7 @@ function dostuff(res, post) {
                 url = `https://na1.api.riotgames.com/lol/league/v4/entries/by-summoner/${summonerid}?api_key=${key}`
                     // get elo of 
                 getrequest(url, (error, data) => {
-
+                    if (data.data != "error"){ 
                     for (var i in data.data) {
                         if (data.data[i].queueType == "RANKED_SOLO_5x5") {
                             console.log(data.data[i].rank)
@@ -133,7 +138,7 @@ function dostuff(res, post) {
                     url = `https://na1.api.riotgames.com/lol/match/v4/matchlists/by-account/${accountid}?api_key=${key}`
 
                     getrequest(url, (error, data) => {
-
+                        if (data.data != "error"){ 
                         kills = 0
                         deaths = 0
                         assists = 0
@@ -185,7 +190,7 @@ function dostuff(res, post) {
                             url = `https://na1.api.riotgames.com/lol/match/v4/matches/${gameid}?api_key=${key}`
 
                             getrequest(url, (error, data) => {
-
+                                if (data.data != "error"){ 
                                 for (var i = 0; i < data.data.participantIdentities.length; i++) {
                                     if (summonername.toLowerCase() == data.data.participantIdentities[i].player.summonerName.toLowerCase()) {
                                         participantid = data.data.participantIdentities[i].participantId
@@ -390,35 +395,38 @@ function dostuff(res, post) {
                                     res.send({ object: obj })
                                 }
 
-
+                            }
+                            else{
+                                res.send({ object: "error" })
+                            }
                             })
 
 
                         }
-
+                    }
+                    else{
+                        res.send({ object: "error" })
+                    }
                     })
-
-
+                }
+                else{
+                    res.send({ object: "error" })
+                }
                 })
-
-
+            }
+            else{
+                res.send({ object: "error" })
+            }
             })
-
-
-
-
-
-
-
+        }
+        else{
+            res.send({ object: "error" })
+        }
         })
-
-
-
-
-
-
-
-
+    }
+    else{
+        res.send({ object: "error" })
+    }     
     })
 
 }

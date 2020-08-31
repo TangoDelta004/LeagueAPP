@@ -16,21 +16,22 @@ export class SummaryComponent implements OnInit {
 
 
 
-  P1summonername = ''
-  P2summonername = ''
+  P1summonername = 'NA'
+  P2summonername = 'NA'
 
-  P1tier = ""
-  P1rank = ""
-  P2tier = ""
-  P2rank = ""
+  P1tier = "NA"
+  P1rank = "NA"
+  P2tier = "NA"
+  P2rank = "NA"
 
-  P2bestchamp = ""
-  P2bestchampmastery = ""
-  P2totalmastery = ""
-  P1bestchamp = ""
-  P1bestchampmastery = ""
-  P1totalmastery = ""
+  P2bestchamp = "NA"
+  P2bestchampmastery = "NA"
+  P2totalmastery = "NA"
+  P1bestchamp = "NA"
+  P1bestchampmastery = "NA"
+  P1totalmastery = "NA"
 
+  P2notfound= false
   P2iron = false
   P2bronze = false
   P2silver = false
@@ -51,6 +52,7 @@ export class SummaryComponent implements OnInit {
   P1grandmaster = false
   P1challenger = false
   P1unranked = false
+  P1notfound = false
 
   P2ratio = 0
   P1ratio = 0
@@ -148,157 +150,162 @@ export class SummaryComponent implements OnInit {
     console.log(P1)
     console.log(P2)
 
-    this.P1summonername = P1.summonername
-    this.P2summonername = P2.summonername
+    this.P1summonername = this.functions.getP1Name()
+    this.P2summonername = this.functions.getP2Name()
 
+    if (P1 != "error") {
+      switch (P1.tier) {
+        case "UNRANKED":
+          this.P1unranked = true
+          break;
+        case "IRON":
+          this.P1iron = true
+          break;
+        case "BRONZE":
+          this.P1bronze = true
+          break;
+        case "SILVER":
+          this.P1silver = true
+          break;
+        case "GOLD":
+          this.P1gold = true
+          break;
+        case "PLATINUM":
+          this.P1plat = true
+          break;
+        case "DIAMOND":
+          this.P1diamond = true
+          break;
+        case "MASTER":
+          this.P1master = true
+          break;
+        case "GRANDMASTER":
+          this.P1grandmaster = true
+          break;
+        case "CHALLENGER":
+          this.P1challenger = true
+          break;
 
-    switch (P1.tier) {
-      case "UNRANKED":
-        this.P1unranked = true
-        break;
-      case "IRON":
-        this.P1iron = true
-        break;
-      case "BRONZE":
-        this.P1bronze = true
-        break;
-      case "SILVER":
-        this.P1silver = true
-        break;
-      case "GOLD":
-        this.P1gold = true
-        break;
-      case "PLATINUM":
-        this.P1plat = true
-        break;
-      case "DIAMOND":
-        this.P1diamond = true
-        break;
-      case "MASTER":
-        this.P1master = true
-        break;
-      case "GRANDMASTER":
-        this.P1grandmaster = true
-        break;
-      case "CHALLENGER":
-        this.P1challenger = true
-        break;
+        default:
+          this.P1unranked = true
+      }
 
-      default:
-        this.P1unranked = true
+    
+      this.P1rank = P1.rank
+      this.P1tier = P1.tier
+
+      this.P1ratio = P1.ratio
+      this.P1kills = P1.kills
+      this.P1deaths = P1.deaths
+      this.P1assists = P1.assists
+      this.P1totaldamage = P1.totaldamage
+      this.P1bestchamp = P1.bestchamp
+      this.P1bestchampmastery = P1.bestchampmastery
+      this.P1totalmastery = P1.totalchampmastery
+      this.P1cs = P1.cs
+      this.P1creepPermin10 = P1.creepspermin10
+      this.P1creepPermin20 = P1.creepspermin20
+      this.P1goldpermin10 = P1.goldpermin10
+      this.P1goldpermin20 = P1.goldpermin20
+      this.P1xppermin10 = P1.xppermin10
+      this.P1xppermin20 = P1.xppermin20
+      this.P1vs = P1.vs
+      this.P1visionwards = P1.visionwards
+      this.P1objdamage = P1.objdamage
+      this.P1turretdamage = P1.turretdamage
+      this.P1turretkills = P1.turretkills
+      this.P1inhibkills = P1.inhibkills
+      this.P1dragonkills = P1.dragonkills
+      this.P1baronkills = P1.baronkills
+      this.P1riftkills = P1.riftkills
+      this.P1csdiff10 = P1.csdiff10
+      this.P1csdiff20 = P1.csdiff20
+      this.P1xpdiffpermin10 = P1.xpdiffpermin10
+      this.P1xpdiffpermin20 = P1.xpdiffpermin20
+      this.P1killingspree = P1.killingspree
+      this.P1multikill = P1.multikill
     }
-    switch (P2.tier) {
-      case "UNRANKED":
-        this.P2unranked = true
-        break;
-      case "IRON":
-        this.P2iron = true
-        break;
-      case "BRONZE":
-        this.P2bronze = true
-        break;
-      case "SILVER":
-        this.P2silver = true
-        break;
-      case "GOLD":
-        this.P2gold = true
-        break;
-      case "PLATINUM":
-        this.P2plat = true
-        break;
-      case "DIAMOND":
-        this.P2diamond = true
-        break;
-      case "MASTER":
-        this.P2master = true
-        break;
-      case "GRANDMASTER":
-        this.P2grandmaster = true
-        break;
-      case "CHALLENGER":
-        this.P2challenger = true
-        break;
-
-      default:
-        this.P2unranked = true
+    else{
+      this.P1notfound=true
     }
 
- 
-    this.P1rank =P1.rank
-    this.P1tier= P1.tier
+    if (P2 != "error") {
+      console.log(P2)
+      switch (P2.tier) {
+        case "UNRANKED":
+          this.P2unranked = true
+          break;
+        case "IRON":
+          this.P2iron = true
+          break;
+        case "BRONZE":
+          this.P2bronze = true
+          break;
+        case "SILVER":
+          this.P2silver = true
+          break;
+        case "GOLD":
+          this.P2gold = true
+          break;
+        case "PLATINUM":
+          this.P2plat = true
+          break;
+        case "DIAMOND":
+          this.P2diamond = true
+          break;
+        case "MASTER":
+          this.P2master = true
+          break;
+        case "GRANDMASTER":
+          this.P2grandmaster = true
+          break;
+        case "CHALLENGER":
+          this.P2challenger = true
+          break;
 
-    this.P1ratio = P1.ratio
-    this.P1kills = P1.kills
-    this.P1deaths = P1.deaths
-    this.P1assists = P1.assists
-    this.P1totaldamage = P1.totaldamage
-    this.P1bestchamp = P1.bestchamp
-    this.P1bestchampmastery = P1.bestchampmastery
-    this.P1totalmastery = P1.totalchampmastery
-    this.P1cs = P1.cs
-    this.P1creepPermin10 = P1.creepspermin10
-    this.P1creepPermin20 = P1.creepspermin20
-    this.P1goldpermin10 = P1.goldpermin10
-    this.P1goldpermin20 = P1.goldpermin20
-    this.P1xppermin10 = P1.xppermin10
-    this.P1xppermin20 = P1.xppermin20
-    this.P1vs = P1.vs
-    this.P1visionwards = P1.visionwards
-    this.P1objdamage = P1.objdamage
-    this.P1turretdamage = P1.turretdamage
-    this.P1turretkills = P1.turretkills
-    this.P1inhibkills = P1.inhibkills
-    this.P1dragonkills = P1.dragonkills
-    this.P1baronkills = P1.baronkills
-    this.P1riftkills = P1.riftkills
-    this.P1csdiff10 = P1.csdiff10
-    this.P1csdiff20 = P1.csdiff20
-    this.P1xpdiffpermin10 = P1.xpdiffpermin10
-    this.P1xpdiffpermin20 = P1.xpdiffpermin20
-    this.P1killingspree = P1.killingspree
-    this.P1multikill = P1.multikill
-
-
-
-
-
-
-    this.P2rank =P2.rank
-    this.P2tier= P2.tier
-
-    this.P2ratio = P2.ratio
-    this.P2kills = P2.kills
-    this.P2deaths = P2.deaths
-    this.P2assists = P2.assists
-    this.P2totaldamage = P2.totaldamage
-    this.P2bestchamp = P2.bestchamp
-    this.P2bestchampmastery = P2.bestchampmastery
-    this.P2totalmastery = P2.totalchampmastery
-    this.P2cs = P2.cs
-    this.P2creepspermin10 = P2.creepspermin10
-    this.P2creepspermin20 = P2.creepspermin20
-    this.P2goldpermin10 = P2.goldpermin10
-    this.P2goldpermin20 = P2.goldpermin20
-    this.P2xppermin10 = P2.xppermin10
-    this.P2xppermin20 = P2.xppermin20
-    this.P2vs = P2.vs
-    this.P2visionwards = P2.visionwards
-    this.P2objdamage = P2.objdamage
-    this.P2turretdamage = P2.turretdamage
-    this.P2turretkills = P2.turretkills
-    this.P2inhibkills = P2.inhibkills
-    this.P2dragonkills = P2.dragonkills
-    this.P2baronkills = P2.baronkills
-    this.P2riftkills = P2.riftkills
-    this.P2csdiff10 = P2.csdiff10
-    this.P2csdiff20 = P2.csdiff20
-    this.P2xpdiffpermin10 = P2.xpdiffpermin10
-    this.P2xpdiffpermin20 = P2.xpdiffpermin20
-    this.P2killingspree = P2.killingspree
-    this.P2multikill = P2.multikill
+        default:
+          this.P2unranked = true
+      }
 
 
 
+      this.P2rank = P2.rank
+      this.P2tier = P2.tier
 
-}
+      this.P2ratio = P2.ratio
+      this.P2kills = P2.kills
+      this.P2deaths = P2.deaths
+      this.P2assists = P2.assists
+      this.P2totaldamage = P2.totaldamage
+      this.P2bestchamp = P2.bestchamp
+      this.P2bestchampmastery = P2.bestchampmastery
+      this.P2totalmastery = P2.totalchampmastery
+      this.P2cs = P2.cs
+      this.P2creepspermin10 = P2.creepspermin10
+      this.P2creepspermin20 = P2.creepspermin20
+      this.P2goldpermin10 = P2.goldpermin10
+      this.P2goldpermin20 = P2.goldpermin20
+      this.P2xppermin10 = P2.xppermin10
+      this.P2xppermin20 = P2.xppermin20
+      this.P2vs = P2.vs
+      this.P2visionwards = P2.visionwards
+      this.P2objdamage = P2.objdamage
+      this.P2turretdamage = P2.turretdamage
+      this.P2turretkills = P2.turretkills
+      this.P2inhibkills = P2.inhibkills
+      this.P2dragonkills = P2.dragonkills
+      this.P2baronkills = P2.baronkills
+      this.P2riftkills = P2.riftkills
+      this.P2csdiff10 = P2.csdiff10
+      this.P2csdiff20 = P2.csdiff20
+      this.P2xpdiffpermin10 = P2.xpdiffpermin10
+      this.P2xpdiffpermin20 = P2.xpdiffpermin20
+      this.P2killingspree = P2.killingspree
+      this.P2multikill = P2.multikill
+    }
+    else{
+      this.P2notfound=true
+    }
+
+  }
 }

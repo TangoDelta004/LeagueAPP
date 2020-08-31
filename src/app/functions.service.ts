@@ -40,5 +40,23 @@ export class FunctionsService {
     return JSON.parse(localStorage.getItem("P2")) 
   }
    
+
+  storeP1Name(name){
+    localStorage.setItem("P1name", name)
+  }
+ 
+  getP1Name(){ 
+    return localStorage.getItem("P1name") 
+  }
+
+  storeP2Name(name){
+    localStorage.setItem("P2name", name)
+  }
+ 
+  getP2Name(){ 
+    return localStorage.getItem("P2name") 
+  }
+
+
 }
 
