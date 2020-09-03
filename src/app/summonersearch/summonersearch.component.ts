@@ -17,6 +17,7 @@ export class SummonersearchComponent implements OnInit {
   passedname;
   base = true;
   loading = false
+  error = false
   dataobj;
 
   P1summonername
@@ -42,20 +43,36 @@ export class SummonersearchComponent implements OnInit {
     var P2summonername = (<HTMLInputElement>document.getElementById("textarea2")).value;
     this.base = false
     this.loading = true
+    this.error= false
 
     const post1 = { name: P1summonername }
     const post2 = { name: P2summonername }
     const request = this.http.post('http://localhost:3000/api/getinfo', post1).subscribe((responseData) => {
-      console.log(responseData)
-      this.functions.storeP1Value(responseData)
-      this.functions.storeP1Name(P1summonername)
-      const request2 = this.http.post('http://localhost:3000/api/getinfo', post2).subscribe((responseData) => {
-        console.log(responseData)
-        this.functions.storeP2Value(responseData)
-        this.functions.storeP2Name(P2summonername)
-        this.router.navigate(['/summary'])
-      })
+      if (responseData['data'] == "error") {
+        this.loading = false
+        this.base = true
+        this.error = true
+        return
+      }
+      else {
+        this.functions.storeP1Value(responseData)
+        this.functions.storeP1Name(P1summonername)
+        const request2 = this.http.post('http://localhost:3000/api/getinfo', post2).subscribe((responseData) => {
+          if (responseData['data'] == "error") {
+            this.loading = false
+            this.base = true
+            this.error = true
+            return
+          }
+          else {
+            this.functions.storeP2Value(responseData)
+            this.functions.storeP2Name(P2summonername)
+            this.router.navigate(['/summary'])
+          }
+        })
+      }
     })
+
 
 
 

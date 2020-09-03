@@ -1,0 +1,41 @@
+
+.flexbox {
+    display: flex;
+    flex-direction: row;
+    height: 92vh;
+    align-content: space-between;
+
+}
+
+.card1 {
+    font-family: "friz";
+    font-size: 4vh;
+    text-align: center;
+    order: 1;
+    flex-basis: 20%;
+    background-color: rgb(240, 240, 240);
+
+}
+
+.card2 {
+    font-family: "friz";
+    font-size: 4vh;
+    text-align: center;
+    order: 2;
+    flex-basis: 80%;
+    background-color: rgb(221, 221, 221);
+    
+}
+
+.picturecard{
+    background-color: aqua;
+    width: 100%;
+    height: 20%
+
+}
+
+.button{
+    width: 100%;
+    height: 10%;
+    font-size: 2vh;
+}

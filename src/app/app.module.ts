@@ -14,6 +14,7 @@ import { MainpageComponent } from './mainpage/mainpage.component';
 import {MatCardModule} from '@angular/material/card';
 import { FormsModule } from '@angular/forms';
 import { SummaryComponent } from './summary/summary.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 
@@ -24,6 +25,7 @@ import { SummaryComponent } from './summary/summary.component';
     FeaturedgamesComponent,
     MainpageComponent,
     SummaryComponent,
+    ProfileComponent,
   
   ],
   imports: [

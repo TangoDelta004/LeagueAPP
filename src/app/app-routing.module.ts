@@ -4,12 +4,15 @@ import { SummonersearchComponent } from './summonersearch/summonersearch.compone
 import { FeaturedgamesComponent } from './featuredgames/featuredgames.component';
 import { MainpageComponent } from './mainpage/mainpage.component';
 import { SummaryComponent } from './summary/summary.component';
+import { ProfileComponent } from './profile/profile.component';
+
 const routes: Routes = [
   { path: '', redirectTo: '/mainpage',pathMatch: "full" },
   { path: 'mainpage', component: MainpageComponent },
   { path: 'summonersearch', component: SummonersearchComponent },
   { path: 'featuredgames', component: FeaturedgamesComponent },
   { path: 'summary', component: SummaryComponent },
+  { path: 'profile', component: ProfileComponent },
 ];
 
 @NgModule({

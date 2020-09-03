@@ -119,3 +119,10 @@
     opacity: 1;
     right: 0;
 }
+
+
+.errormessage {
+    background-color: red;
+    color:white;
+    text-align: center;
+}

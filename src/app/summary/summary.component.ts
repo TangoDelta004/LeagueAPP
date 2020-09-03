@@ -145,8 +145,8 @@ export class SummaryComponent implements OnInit {
 
 
     //this.functions.currentMessage.subscribe(dataobj => this.dataobj = dataobj)
-    var P1 = this.functions.getP1Value().object
-    var P2 = this.functions.getP2Value().object
+    var P1 = this.functions.getP1Value().data
+    var P2 = this.functions.getP2Value().data
     console.log(P1)
     console.log(P2)
 
