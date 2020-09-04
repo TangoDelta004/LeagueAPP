@@ -15,6 +15,7 @@ import {MatCardModule} from '@angular/material/card';
 import { FormsModule } from '@angular/forms';
 import { SummaryComponent } from './summary/summary.component';
 import { ProfileComponent } from './profile/profile.component';
+import { LoginComponent } from './login/login.component';
 
 
 
@@ -26,6 +27,7 @@ import { ProfileComponent } from './profile/profile.component';
     MainpageComponent,
     SummaryComponent,
     ProfileComponent,
+    LoginComponent,
   
   ],
   imports: [

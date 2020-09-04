@@ -1,0 +1,16 @@
+<div class = box>
+    <div class = 'user'>
+        Username
+    </div>
+    <div class = 'pass'>
+        Password
+    </div>
+    <form>
+        <input class='textbox1' [(ngModel)]='user' name='user'>
+    </form>
+    <form>
+        <input class='textbox2' [(ngModel)]='pass' name='pass'>
+    </form>
+    <button class = 'loginbutton'  (click)='makeuser()'> Login</button>
+    <button class = signin> Don't have an account? Sign in</button>
+</div>

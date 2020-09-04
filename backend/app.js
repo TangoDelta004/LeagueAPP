@@ -41,8 +41,8 @@ app.use(bodyParser.json())
 
 app.post('/adduser', (req, res, next) => {
   const post = req.body
-  var username = post.username
-  var password = post.password
+  let username = post.username
+  let password = post.password
   user.create({
     user: username,
     password:password 
@@ -52,9 +52,18 @@ app.post('/adduser', (req, res, next) => {
 
 })
 
-app.get('/getusers', (req, res, next) => {
-  
-
+app.post('/getuser', (req, res, next) => {
+  const post = req.body
+  let username = post.username
+  let password = post.password
+  user.findByPk(username).then(
+    user => {
+      console.log(user.dataValues)
+      res.send(user.dataValues)
+    }
+  ).catch(err=>{
+    res.send({error:err})
+  })
 })
 
 
@@ -67,16 +76,6 @@ async function callgetinfo(post, key, res) {
 app.post('/api/getinfo', (req, res, next) => {
   const post = req.body
   callgetinfo(post, key, res)
-
-  // res.send(response)
-
-
-
-
-
-
-
-
 })
 
 module.exports = app

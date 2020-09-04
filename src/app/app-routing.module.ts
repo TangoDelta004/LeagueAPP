@@ -5,6 +5,7 @@ import { FeaturedgamesComponent } from './featuredgames/featuredgames.component'
 import { MainpageComponent } from './mainpage/mainpage.component';
 import { SummaryComponent } from './summary/summary.component';
 import { ProfileComponent } from './profile/profile.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/mainpage',pathMatch: "full" },
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'featuredgames', component: FeaturedgamesComponent },
   { path: 'summary', component: SummaryComponent },
   { path: 'profile', component: ProfileComponent },
+  { path: 'login', component: LoginComponent },
 ];
 
 @NgModule({

@@ -11,21 +11,13 @@ import { FunctionsService } from "../functions.service";
   templateUrl: './mainpage.component.html',
   styleUrls: ['./mainpage.component.css']
 })
-export class MainpageComponent {
+export class MainpageComponent implements OnInit {
   
-  user = ''
-  pass = ''
 
-  constructor(private http: HttpClient, private router: Router, private functions: FunctionsService) { }
 
-  makeuser(){
-    console.log(this.user)
-    console.log(this.pass)
-    const post = { username:this.user,password: this.pass}
-    const request = this.http.post('http://localhost:3000/adduser', post).subscribe((responseData) => {console.log(responseData)})
+  constructor() { }
 
-  }
-
+ 
   ngOnInit() {
 
   }

@@ -1,0 +1,98 @@
+@font-face {
+    font-family: 'Friz';
+    /*a name to be used later*/
+    src: url('../../assets/friz.ttf');
+    /*URL to font*/
+}
+.textbox1 {
+    
+    height: 5vh;
+    font-size: 2vh;
+    background-color: white;
+    width: 30%;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 1vh;
+    box-sizing: border-box;
+    position: absolute;
+    top: 40%; 
+    right: 50%;
+    transform: translate(50%,-50%);
+
+}
+.textbox2 {
+    
+    height: 5vh;
+    font-size: 2vh;
+    background-color: white;
+    width: 30%;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 1vh;
+    position: absolute;
+    top: 52%; 
+    right: 50%;
+    transform: translate(50%,-50%);
+}
+
+.box {
+    margin-top: 7vh;
+    background-color: #26272C;
+    height: 80vh;
+    width: 95vw;
+    margin-left: 2.5vw;
+    margin-right: 2.5vw;
+    box-shadow: 0 0 1vh .1vh #888888;
+   
+}
+
+.loginbutton{
+    width: 30%;
+    height: 10vh;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 1vh;
+    font-family: "friz";
+    position: absolute;
+    top: 62%; 
+    right: 50%;
+    transform: translate(50%,-50%);
+}
+
+.signin{
+    width: 30%;
+    height: 5vh;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 1vh;
+    font-family: "friz";
+    position: absolute;
+    top: 72%; 
+    right: 50%;
+    transform: translate(50%,-50%);
+}
+
+
+.user{
+    color: #D2C168;
+    font-size: 2vh;
+    font-family: "friz";
+    position: absolute;
+    top: 36%; 
+    right: 50%;
+    transform: translate(50%,-50%);
+
+
+}
+
+.pass{
+    color: #D2C168;
+    font-size: 2vh;
+    font-family: "friz";
+    position: absolute;
+    top: 47%; 
+    right: 50%;
+    transform: translate(50%,-50%);
+
+
+}
