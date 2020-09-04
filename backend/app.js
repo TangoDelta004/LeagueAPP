@@ -1,63 +1,80 @@
 var express = require('express');
 const app = express()
+var cors = require('cors')
 var request = require('request');
 const bodyParser = require('body-parser')
-const exphbs = require('express-handlebars')
-const path = require('path')
 const getinfo = require('./getinfo')
 const fs = require('fs')
+const db = require('./database')
+const user = require('./models/User')
 
+// authenticating DB connection
 
-
-// setting up the PostgreSQL database
-const Sequelize = require('sequelize')
-const db = new Sequelize('postgres://postgres:leaguepass@localhost:5432/LeagueAPP') // Example for postgres
 db.authenticate().then(() => console.log('database connected')).catch(err => console.log(err))
 
 
 
 
 finish = false
-var key=''
+var key = ''
 
-fs.readFile('../APIkey.txt', 'utf8' , (err, data) => {
-    if (err) {
-      console.error(err)
-      return
-    }
-    key = data
-  })
-
-
-
+//reading the API key from a local file
+fs.readFile('../APIkey.txt', 'utf8', (err, data) => {
+  if (err) {
+    console.error(err)
+    return
+  }
+  key = data
+})
 
 
 
+db.sync().then(result => {
+  console.log("all good")
+}).catch(err => {
+  console.log(err)
+}) 
+
+
+app.use(cors())
 app.use(bodyParser.json())
 
-app.get('/users', (req, res, next) => {
-    res.send("users")
+app.post('/adduser', (req, res, next) => {
+  const post = req.body
+  var username = post.username
+  var password = post.password
+  user.create({
+    user: username,
+    password:password 
 
+  }).then(result => {console.log("created user")}).catch(err=>{console.log(err)})
+  res.send({response: "done"})
 
 })
 
-async function callgetinfo(post,key,res){
-    var response = await getinfo.getinfo(post,key)
-    res.send(response)
+app.get('/getusers', (req, res, next) => {
+  
+
+})
+
+
+
+async function callgetinfo(post, key, res) {
+  var response = await getinfo.getinfo(post, key)
+  res.send(response)
 }
 
-app.post('/api/getinfo', (req, res,next) => {
-    const post = req.body
-    callgetinfo(post,key,res)
+app.post('/api/getinfo', (req, res, next) => {
+  const post = req.body
+  callgetinfo(post, key, res)
 
-   // res.send(response)
-     
+  // res.send(response)
 
-        
-       
-  
-    
-    
+
+
+
+
+
 
 
 })

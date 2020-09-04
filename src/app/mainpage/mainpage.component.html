@@ -3,10 +3,18 @@
         <div class='cardtitle'>LoLImBetterThanYou</div>
     </div>
     <p class='description'>
-        Compare your league of legends stats to another player! <br> Maybe you just want to see if you are better than that idiot who flamed you last game? <br> Maybe you want to compare your stats to challenger players? <br> Find out who YOU are better
+        Compare your league of legends stats to another player! <br> Maybe you just want to see if you are better than that guy who flamed you last game? <br> Maybe you want to compare your stats to challenger players? <br> Find out who YOU are better
         than
     </p>
     <button class="cardbutton" [routerLink]='["../summonersearch"]'>
         <span>Get Started </span>
     </button>
 </div>
+
+<form>
+    <input class='textbox' [(ngModel)]='user' name='user'>
+</form>
+<form>
+    <input class='textbox' [(ngModel)]='pass' name='pass'>
+</form>
+<button style = "width: 30%; height: 30%"  (click)='makeuser()'> Make user</button>

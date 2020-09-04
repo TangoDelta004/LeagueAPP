@@ -16,7 +16,7 @@ const getrequest = (url, callback) => {
         if (data != undefined) {
 
             if (data.status != undefined) {
-                if (data.status.status_code == 404 || data.status.status_code == 400) {
+                if (data.status.status_code >= 400) {
                     data = "error"
                 }
             }

@@ -60,3 +60,15 @@
     opacity: 1;
     right: 0;
 }
+
+.textbox {
+   
+    height: 5vh;
+    font-size: 2vh;
+    background-color: white;
+    width: 30%;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 1vh;
+    box-sizing: border-box;
+}
