@@ -9,12 +9,12 @@
     <div class='titlebox' (click)="mainnav()">
         <div class='title'>League Tools</div>
     </div>
-    <button class='logintab' [routerLink]='["./login"]'>
+    <button *ngIf="!loggedin" class='tab' [routerLink]='["./login"]'>
         <div>Login </div>
     </button>
-    <!-- <button class='profiletab' [routerLink]='["./profile"]'>
+    <button *ngIf="loggedin" class='tab' [routerLink]='["./profile"]'>
         <div>Profile </div>
-    </button> -->
+    </button>
     <span style="font-size:5vmin;cursor:pointer;margin-left:1vw;" (click)="openNav()">&#9776;</span>
 </div>
 <div id="main">

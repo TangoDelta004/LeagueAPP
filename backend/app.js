@@ -7,7 +7,8 @@ const getinfo = require('./getinfo')
 const fs = require('fs')
 const db = require('./database')
 const user = require('./models/User')
-
+const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
 // authenticating DB connection
 
 db.authenticate().then(() => console.log('database connected')).catch(err => console.log(err))
@@ -39,30 +40,55 @@ db.sync().then(result => {
 app.use(cors())
 app.use(bodyParser.json())
 
+
+
+app.get('/test', (req,res,next)=>{
+  console.log(req.session.isLoggedIn)
+  res.send({dummy:'dummy'})
+})
+
+
 app.post('/adduser', (req, res, next) => {
   const post = req.body
-  let username = post.username
-  let password = post.password
-  user.create({
-    user: username,
-    password:password 
+  bcrypt.hash(post.password,10).then(hash=>{
+    let password = hash
+    user.create({
+      user: post.username,
+      password:password 
+  
+    }).then(result => {console.log("created user")}).catch(err=>{console.log(err)})
+    res.send({response: "done"})
 
-  }).then(result => {console.log("created user")}).catch(err=>{console.log(err)})
-  res.send({response: "done"})
+  })
+
+
 
 })
 
-app.post('/getuser', (req, res, next) => {
+app.post('/login', (req, res, next) => {
+  let fetcheduser
   const post = req.body
   let username = post.username
-  let password = post.password
+  //find user in postgres DB by Primary key username
   user.findByPk(username).then(
     user => {
-      console.log(user.dataValues)
-      res.send(user.dataValues)
-    }
-  ).catch(err=>{
-    res.send({error:err})
+      fetcheduser = user
+      //compare the request password with the stored password. NOTE: that we are comparing the hash, not the real password.
+      return bcrypt.compare(req.body.password,user.password)
+    })
+    .then(result =>{
+      //if the comparison is true, then create the token and send it to the application
+      if (result == true){
+        const token = jwt.sign({user:fetcheduser.user},"tempsecret",{expiresIn:'1h'})
+        res.status(200).json({
+          response:token
+        })
+      }
+      else {
+        res.send({response: "error"})
+      }
+    }).catch(err=>{
+    res.send({response:"error"})
   })
 })
 

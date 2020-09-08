@@ -12,14 +12,36 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class FunctionsService {
   
+  
   private messageSource = new BehaviorSubject('default message');
   currentMessage = this.messageSource.asObservable();
-  
 
-  
 
   constructor(private http: HttpClient) { }
   
+
+  changeMessage(message: string) {
+    this.messageSource.next(message)
+  }
+
+
+  storetoken(token){
+    localStorage.setItem("token", token)
+  }
+
+  gettoken(){
+    return localStorage.getItem('token')
+
+  }
+
+  storeloggedin(loggedin){
+    localStorage.setItem("loggedin", loggedin)
+  }
+
+  getloggedin(){
+    return localStorage.getItem('loggedin')
+
+  }
 
   storeP1Value(responseData){
     var dataobj = responseData
