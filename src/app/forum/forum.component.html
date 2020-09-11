@@ -1,3 +1,4 @@
+<app-nav></app-nav>
 <div class='createpost'>
     <button class="postbutton" [routerLink]='["../createpost"]'>
         <div>Create a Post</div>
@@ -6,20 +7,25 @@
 </div>
 <div class='contain'>
     <div *ngFor="let post of posts">
-        <div class = postcard>
-            <div class = vote>
-                <div class= counter>
+        <div class=postcard>
+            <div class=vote>
+                <div class=counter>
                     {{post.counter}}
 
                 </div>
-                <button class = 'upvote' (click)=upvote(post.id)>+</button>
-                <button class = 'downvote'(click)=downvote(post.id)>-</button>
-                    
+                <button class='upvote' (click)=upvote(post.postid)>+</button>
+                <button class='downvote' (click)=downvote(post.postid)>-</button>
+        
 
             </div>
-            <div class = post>
-                <div class = title> {{post.title}}</div>
-                <div class = body> {{post.body}}</div>
+            <div class=post>
+                <div class=mainpost>
+                    <div class=title> {{post.title}}</div>
+                    <div class=body> {{post.body}}</div>
+                </div>
+                <div class = postedby>
+                    Posted by: {{post.username}}
+                </div>
             </div>
 
         </div>

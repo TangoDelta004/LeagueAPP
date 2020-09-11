@@ -12,19 +12,8 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class FunctionsService {
   
-  
-  private messageSource = new BehaviorSubject('default message');
-  currentMessage = this.messageSource.asObservable();
-
-
   constructor(private http: HttpClient) { }
   
-
-  changeMessage(message: string) {
-    this.messageSource.next(message)
-  }
-
-
   storetoken(token){
     localStorage.setItem("token", token)
   }
@@ -42,6 +31,16 @@ export class FunctionsService {
     return localStorage.getItem('loggedin')
 
   }
+
+  storeusername(username){
+    localStorage.setItem("username", username)
+  }
+
+  getusername(){
+    return localStorage.getItem('username')
+
+  }
+
 
   storeP1Value(responseData){
     var dataobj = responseData

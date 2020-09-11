@@ -40,6 +40,8 @@ export class LoginComponent implements OnInit {
         const token = responseData.response
         this.functions.storetoken(token)
         this.functions.storeloggedin('true')
+        this.functions.storeusername(this.user)
+        console.log(this.user)
         this.router.navigate(['/mainpage']) 
       }
     })

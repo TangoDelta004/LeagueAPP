@@ -9,6 +9,8 @@ import { LoginComponent } from './login/login.component';
 import { ForumComponent } from './forum/forum.component';
 import { CreatepostComponent } from './createpost/createpost.component';
 
+
+
 const routes: Routes = [
   { path: '', redirectTo: '/mainpage',pathMatch: "full" },
   { path: 'mainpage', component: MainpageComponent },
@@ -19,6 +21,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'forum', component: ForumComponent },
   { path: 'createpost', component: CreatepostComponent },
+
 ];
 
 @NgModule({

@@ -38,6 +38,15 @@
     flex-basis: 95%;
 }
 
+.mainpost{
+    height:90%
+}
+.postedby{
+    background-color: #585858;
+    color: #D2C168;
+    height:10%
+}
+
 .vote{
     order:1;
     flex-basis: 5%;

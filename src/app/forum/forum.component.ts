@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpClient, HttpRequest } from '@angular/common/http';
+import { HttpClient, HttpRequest,HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators'
+import { FunctionsService } from "../functions.service";
 
 
 interface Post {
-  id: string
+  username:string
+  _id: string
   title: string
   body: string
   counter: number
@@ -19,7 +21,7 @@ interface Post {
 export class ForumComponent implements OnInit {
   posts = []
   counter = 0
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private functions: FunctionsService) { }
 
 
   upvote(id){
@@ -30,10 +32,27 @@ export class ForumComponent implements OnInit {
     this.posts[id].counter-=1
   }
 
+  delete(id){
+    console.log(this.posts[id].id)
+
+    
+    var headers_object = new HttpHeaders().set("Authorization", "Bearer " + this.functions.gettoken());
+
+    const httpOptions = {
+      headers: headers_object
+    };
+
+    const request = this.http.delete('http://localhost:3000/api/deletepost/'+this.posts[id].id,httpOptions).subscribe((responseData)=>{
+      console.log(responseData)
+    })
+  }
+
   ngOnInit() {
     const request = this.http.get<{message:string; posts: Post[]}>('http://localhost:3000/api/getposts').pipe(map(postData => {
       return postData.posts.map(post => {
         return {
+          username:post.username,
+          id:post._id,
           title:post.title,
           body: post.body
         }
@@ -42,9 +61,8 @@ export class ForumComponent implements OnInit {
       console.log(responseData)
       for (let i=0; i<responseData.length; i++){
         this.posts.push(responseData[i])
-        this.posts[i].id = i
         this.posts[i].counter = 0
-        console.log(this.posts[i].id)
+        this.posts[i].postid = i
       }
       console.log(this.posts)
     })

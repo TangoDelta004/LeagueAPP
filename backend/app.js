@@ -11,6 +11,7 @@ const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const Post = require('./models/Post')
 const mongoose = require('mongoose')
+const checkauth = require("./middleware/check-auth")
 // authenticating DB connection
 
 db.authenticate().then(() => console.log('database connected')).catch(err => console.log(err))
@@ -65,18 +66,12 @@ app.use(bodyParser.json())
 
 
 
-app.get('/test', (req, res, next) => {
-  console.log(req.session.isLoggedIn)
-  res.send({ dummy: 'dummy' })
-})
-
-
 app.post('/adduser', (req, res, next) => {
   const post = req.body
   bcrypt.hash(post.password, 10).then(hash => {
     let password = hash
     user.create({
-      user: post.username,
+      username: post.username,
       password: password
 
     }).then(result => { console.log("created user") }).catch(err => { console.log(err) })
@@ -134,9 +129,10 @@ app.post('/api/getinfo', (req, res, next) => {
 
 
 
-app.post('/api/post', (req, res, next) => {
+app.post('/api/post',checkauth, (req, res, next) => {
 
   const post = new Post({
+    username: req.body.username,
     title: req.body.title,
     body: req.body.body
   })
@@ -145,11 +141,35 @@ app.post('/api/post', (req, res, next) => {
   res.send({ response: "post added" })
 })
 
+app.post('/api/getusersposts', (req, res, next) => {
+  var user = req.body.username
+  console.log(user)
+  Post.find({username:user}).then((documents) => {
+    console.log(documents)
+    res.send({ posts: documents })
+  })
+
+})
+
 app.get('/api/getposts', (req, res, next) => {
 
   Post.find().then((documents) => {
     console.log(documents)
     res.send({ posts: documents })
+  })
+
+})
+
+
+app.delete('/api/deletepost/:id',checkauth,(req, res, next) => {
+
+  console.log(req.params.id)
+  Post.deleteOne({_id: req.params.id}).then(result => {
+    console.log(result)
+    res.status(200).json({message:"Post deleted!"})
+  })
+  .catch(err => {
+    res.status(400).json({message: err})
   })
 
 })

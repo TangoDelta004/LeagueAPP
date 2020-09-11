@@ -18,6 +18,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { LoginComponent } from './login/login.component';
 import { ForumComponent } from './forum/forum.component';
 import { CreatepostComponent } from './createpost/createpost.component';
+import { NavComponent } from './nav/nav.component';
+
 
 
 
@@ -32,6 +34,8 @@ import { CreatepostComponent } from './createpost/createpost.component';
     LoginComponent,
     ForumComponent,
     CreatepostComponent,
+    NavComponent,
+
   
   ],
   imports: [

@@ -1,0 +1,13 @@
+
+<div id='navbar'>
+    <div class='titlebox' (click)="mainnav()">
+        <div class='title'>League Tools</div>
+    </div>
+    <button *ngIf="!loggedin" class='tab' [routerLink]='["../login"]'>
+        <div>Login </div>
+    </button>
+    <button *ngIf="loggedin" class='tab' [routerLink]='["../profile"]'>
+        <div>Profile </div>
+    </button>
+    <span style="font-size:5vmin;cursor:pointer;margin-left:1vw;" (click)="openNav()">&#9776;</span>
+</div> 

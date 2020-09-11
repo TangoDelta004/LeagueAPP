@@ -2,7 +2,7 @@ const Sequelize = require('sequelize')
 const db = require('../database')
 
 const user = db.define('user',{
-    user: {
+    username: {
         type: Sequelize.STRING,
         primaryKey: true,
         allowNull:false
@@ -10,7 +10,10 @@ const user = db.define('user',{
     password: {
         type: Sequelize.STRING,
         allowNull:false
-    }
-})
+    },
+    
+},
+{timestamps: false}
+)
 
 module.exports = user
