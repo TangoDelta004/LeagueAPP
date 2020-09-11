@@ -32,15 +32,15 @@ export class LoginComponent implements OnInit {
     const request = this.http.post<{ response: string }>('http://localhost:3000/login', post).subscribe((responseData) => {
  
       var response:any = responseData
-      if (response.response != "error") {
-       
+      if (response.status >= 400) {
+        console.log("Error trying to retrieve user")
+
+      }
+      else{
         const token = responseData.response
         this.functions.storetoken(token)
         this.functions.storeloggedin('true')
-        this.router.navigate(['/mainpage'])
-      }
-      else{
-        console.log("Error trying to retrieve user")
+        this.router.navigate(['/mainpage']) 
       }
     })
 

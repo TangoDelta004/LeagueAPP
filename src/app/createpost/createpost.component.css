@@ -1,0 +1,26 @@
+
+.contain {
+    background-color: rgb(228, 228, 228);
+    height: 80vh;
+    width: 95vw;
+    margin-left: 2.5vw;
+    margin-right: 2.5vw;
+    margin-top: 5vh;
+    box-shadow: 0 0 1vh .1vh #888888;
+}
+
+.textbox{
+    margin-top: 5vh;
+    background-color: rgb(255, 255, 255);
+    text-align: center;
+}
+.textarea{
+    height:65%;
+    background-color: rgb(255, 255, 255);
+    margin-top: 5vh;
+}
+
+.postbutton{
+    height:10%;
+    width:100%;
+}

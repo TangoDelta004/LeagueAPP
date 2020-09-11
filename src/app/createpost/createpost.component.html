@@ -1,0 +1,11 @@
+<div class=contain>
+
+    <form>
+        <input class='textbox' [(ngModel)]='title' name='title' placeholder="Post Title">
+    </form>
+    <textarea class = textarea name="w3review" rows="4" cols="50" [(ngModel)]='body'>
+  
+    </textarea>
+
+    <button class=postbutton (click)=post() [routerLink]='["../forum"]'> POST</button>
+</div>

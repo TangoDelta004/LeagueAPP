@@ -1,12 +1,28 @@
-<div class='card'>
-    <div class='cardtitlebox'>
-        <div class='cardtitle'>LoLImBetterThanYou</div>
+<div class = 'flex'>
+    <div class='card1'>
+        <div class='cardtitlebox'>
+            <div class='cardtitle'>LoLImBetterThanYou</div>
+        </div>
+        <p class='description'>
+            Compare your league of legends stats to another player! <br> Maybe you just want to see if you are better
+            than that guy who flamed you last game? <br> Maybe you want to compare your stats to challenger players?
+            <br> Find out who YOU are better
+            than
+        </p>
+        <button class="cardbutton" [routerLink]='["../summonersearch"]'>
+            <span>Get Started </span>
+        </button>
     </div>
-    <p class='description'>
-        Compare your league of legends stats to another player! <br> Maybe you just want to see if you are better than that guy who flamed you last game? <br> Maybe you want to compare your stats to challenger players? <br> Find out who YOU are better
-        than
-    </p>
-    <button class="cardbutton" [routerLink]='["../summonersearch"]'>
-        <span>Get Started </span>
-    </button>
+
+    <div class='card2'>
+        <div class='cardtitlebox'>
+            <div class='cardtitle'>Forums</div>
+        </div>
+        <p class='description'>
+            Discuss your results and other League of Lengends topics here!
+        </p>
+        <button class="cardbutton" [routerLink]='["../forum"]'>
+            <span>Get Started </span>
+        </button>
+    </div>
 </div>

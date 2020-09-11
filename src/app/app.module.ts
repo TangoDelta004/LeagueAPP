@@ -16,6 +16,8 @@ import { FormsModule } from '@angular/forms';
 import { SummaryComponent } from './summary/summary.component';
 import { ProfileComponent } from './profile/profile.component';
 import { LoginComponent } from './login/login.component';
+import { ForumComponent } from './forum/forum.component';
+import { CreatepostComponent } from './createpost/createpost.component';
 
 
 
@@ -28,6 +30,8 @@ import { LoginComponent } from './login/login.component';
     SummaryComponent,
     ProfileComponent,
     LoginComponent,
+    ForumComponent,
+    CreatepostComponent,
   
   ],
   imports: [

@@ -28,7 +28,6 @@ export class MainpageComponent implements OnInit {
     var loginstatus = this.functions.getloggedin()
     this.token = this.functions.gettoken()
     this.functions.currentMessage.subscribe(message => this.message = message)
-
     this.changeloginstatus(loginstatus)
 
 
