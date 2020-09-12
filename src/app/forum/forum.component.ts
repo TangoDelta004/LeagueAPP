@@ -11,6 +11,7 @@ interface Post {
   title: string
   body: string
   counter: number
+  vote:number
 }
 
 @Component({
@@ -25,12 +26,32 @@ export class ForumComponent implements OnInit {
 
 
   upvote(id){
-    this.posts[id].counter+=1
+    let vote = parseInt(this.posts[id].vote)
+    vote+=1
+    this.posts[id].vote = vote
+    console.log(this.posts[id].vote)
+    let post = {
+      id: this.posts[id].id,
+      vote: this.posts[id].vote
+    }
+    const request = this.http.post('http://localhost:3000/api/updatevote/',post).subscribe((responseData)=>{
+      console.log(responseData)
+    })
   }
 
   downvote(id){
-    this.posts[id].counter-=1
-  }
+    let vote = parseInt(this.posts[id].vote)
+    vote-=1
+    this.posts[id].vote = vote
+    console.log(this.posts[id].vote)
+    let post = {
+      id: this.posts[id].id,
+      vote: this.posts[id].vote
+    }
+    const request = this.http.post('http://localhost:3000/api/updatevote/',post).subscribe((responseData)=>{
+      console.log(responseData)
+  })
+}
 
   delete(id){
     console.log(this.posts[id].id)
@@ -54,14 +75,14 @@ export class ForumComponent implements OnInit {
           username:post.username,
           id:post._id,
           title:post.title,
-          body: post.body
+          body: post.body,
+          vote: post.vote
         }
       })
     })).subscribe((responseData) => {
       console.log(responseData)
       for (let i=0; i<responseData.length; i++){
         this.posts.push(responseData[i])
-        this.posts[i].counter = 0
         this.posts[i].postid = i
       }
       console.log(this.posts)

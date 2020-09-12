@@ -134,7 +134,8 @@ app.post('/api/post',checkauth, (req, res, next) => {
   const post = new Post({
     username: req.body.username,
     title: req.body.title,
-    body: req.body.body
+    body: req.body.body,
+    vote: 0
   })
   console.log(post)
   post.save()
@@ -150,6 +151,16 @@ app.post('/api/getusersposts', (req, res, next) => {
   })
 
 })
+
+app.post('/api/updatevote', (req, res, next) => {
+  var query = {'_id': req.body.id};
+  const update = { vote: req.body.vote };
+  Post.findOneAndUpdate(query, update, function(err, doc) {
+    if (err) return res.status(400).json({error:err})
+    return res.status(200).json({message:"updated"})
+});
+})
+
 
 app.get('/api/getposts', (req, res, next) => {
 
