@@ -54,6 +54,7 @@ export class ProfileComponent implements OnInit {
     console.log('logging out')
     this.functions.storeloggedin('false')
     this.functions.storetoken('')
+    this.functions.storeusername('')
     this.router.navigate(['mainpage']);
   }
 

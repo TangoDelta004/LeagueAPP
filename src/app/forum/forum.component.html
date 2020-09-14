@@ -15,7 +15,7 @@
                 </div>
                 <button class='upvote' (click)=upvote(post.postid)>+</button>
                 <button class='downvote' (click)=downvote(post.postid)>-</button>
-        
+
 
             </div>
             <div class=post>
@@ -23,9 +23,13 @@
                     <div class=title> {{post.title}}</div>
                     <div class=body> {{post.body}}</div>
                 </div>
-                <div class = postedby>
+                <div class=postedby>
                     Posted by: {{post.username}}
+                    <button style = "position: relative;right:0%;color:black;">
+                        comment
+                    </button>
                 </div>
+
             </div>
 
         </div>

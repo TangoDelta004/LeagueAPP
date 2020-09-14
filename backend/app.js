@@ -149,6 +149,19 @@ app.post('/api/post',checkauth, (req, res, next) => {
   res.send({ response: "post added" })
 })
 
+
+// app.post('/api/updatecomment',checkauth, (req, res, next) => {
+//   console.log(req.body.voters )
+//   var query = {'_id': req.body.id};
+//   const update = { comments:req.body.comments};
+//   Post.findOneAndUpdate(query, update, function(err, doc) {
+//     if (err) return res.status(400).json({error:err})
+//     return res.status(200).json({message:"updated"})
+// });
+// })
+
+
+
 app.post('/api/getusersposts', (req, res, next) => {
   var user = req.body.username
   console.log(user)
@@ -159,7 +172,7 @@ app.post('/api/getusersposts', (req, res, next) => {
 
 })
 
-app.post('/api/updatevote', (req, res, next) => {
+app.post('/api/updatevote',checkauth, (req, res, next) => {
   console.log(req.body.voters )
   var query = {'_id': req.body.id};
   const update = { vote: req.body.vote, voters:req.body.voters };
