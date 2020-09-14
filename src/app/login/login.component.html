@@ -1,4 +1,8 @@
 <app-nav></app-nav>
+<div *ngIf="error" class = "errormessage">
+    ERROR: that username is already taken
+
+</div>
 <div class = box>
     <div class = 'user'>
         Username
@@ -13,5 +17,5 @@
         <input class='textbox2' [(ngModel)]='pass' name='pass'>
     </form>
     <button class = 'loginbutton'  (click)='login()'> Login</button>
-    <button class = signin  (click)='makeuser()'> Don't have an account? Sign in</button>
+    <button class = signin  (click)='makeuser()'> Don't have an account? Sign up</button>
 </div>

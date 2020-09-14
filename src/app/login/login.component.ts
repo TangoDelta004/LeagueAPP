@@ -12,7 +12,7 @@ import { FunctionsService } from "../functions.service";
 export class LoginComponent implements OnInit {
 
 
-
+  error = false
   user = ''
   pass = ''
 
@@ -22,7 +22,18 @@ export class LoginComponent implements OnInit {
     console.log(this.user)
     console.log(this.pass)
     const post = { username: this.user, password: this.pass }
-    const request = this.http.post('http://localhost:3000/adduser', post).subscribe((responseData) => { console.log(responseData) })
+    const request = this.http.post('http://localhost:3000/adduser', post).subscribe((responseData) => {
+      var response: any = responseData
+      console.log(response)
+
+      if (response.response.split(":")[0] == 400) {
+        console.log(responseData)
+        this.error = true
+      }
+      else {
+        this.login()
+      }
+    })
 
   }
   login() {
@@ -30,20 +41,22 @@ export class LoginComponent implements OnInit {
     console.log(this.pass)
     const post = { username: this.user, password: this.pass }
     const request = this.http.post<{ response: string }>('http://localhost:3000/login', post).subscribe((responseData) => {
- 
-      var response:any = responseData
+
+      var response: any = responseData
       if (response.status >= 400) {
         console.log("Error trying to retrieve user")
 
       }
-      else{
+      else {
         const token = responseData.response
         this.functions.storetoken(token)
         this.functions.storeloggedin('true')
         this.functions.storeusername(this.user)
         console.log(this.user)
-        this.router.navigate(['/mainpage']) 
+        this.router.navigate(['/mainpage'])
+
       }
+
     })
 
   }

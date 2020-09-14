@@ -46,7 +46,8 @@ export class ProfileComponent implements OnInit {
 
     const request = this.http.delete('http://localhost:3000/api/deletepost/'+this.posts[id].id,httpOptions).subscribe((responseData)=>{
       console.log(responseData)
-    })
+
+        })
   }
 
   logout(){

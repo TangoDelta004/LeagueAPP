@@ -74,8 +74,14 @@ app.post('/adduser', (req, res, next) => {
       username: post.username,
       password: password
 
-    }).then(result => { console.log("created user") }).catch(err => { console.log(err) })
-    res.send({ response: "done" })
+    }).then(result => { 
+      console.log("created user")
+      //bad temp solution to error handling, ran into a bug im looking into 
+      res.send({response: "200: done"})
+    }).catch(err => { 
+      res.send({ response: "400: bad request" })
+    })
+    
 
   })
 
@@ -135,7 +141,8 @@ app.post('/api/post',checkauth, (req, res, next) => {
     username: req.body.username,
     title: req.body.title,
     body: req.body.body,
-    vote: 0
+    vote: 0,
+    voters: []
   })
   console.log(post)
   post.save()
@@ -153,8 +160,9 @@ app.post('/api/getusersposts', (req, res, next) => {
 })
 
 app.post('/api/updatevote', (req, res, next) => {
+  console.log(req.body.voters )
   var query = {'_id': req.body.id};
-  const update = { vote: req.body.vote };
+  const update = { vote: req.body.vote, voters:req.body.voters };
   Post.findOneAndUpdate(query, update, function(err, doc) {
     if (err) return res.status(400).json({error:err})
     return res.status(200).json({message:"updated"})
