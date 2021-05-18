@@ -37,7 +37,7 @@ export class SummonersearchComponent implements OnInit {
 
 
 
-  private async search() {
+  public async search() {
 
     var P1summonername = (<HTMLInputElement>document.getElementById("textarea1")).value;
     var P2summonername = (<HTMLInputElement>document.getElementById("textarea2")).value;
